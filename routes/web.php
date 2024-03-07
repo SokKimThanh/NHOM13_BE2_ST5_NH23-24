@@ -13,19 +13,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/user/{name}',function($name){
-    return "xin chao, " . $name;
-});
+// Route::get('/user/{name}',function($name){
+//     return "xin chao, " . $name;
+// });
 
-Route::get('/user2/{name?}',function($name = "admin"){
-    return "xin chao, " . $name;
-});
+// Route::get('/user2/{name?}',function($name = "admin"){
+//     return "xin chao, " . $name;
+// });
 
-// demo regular expresion
-Route::get('/user2/{name?}',function($name = "admin"){
-    return "xin chao, " . $name;
-})->where('name', '[a-z]{4}');
+// // demo regular expresion
+// Route::get('/user2/{name?}',function($name = "admin"){
+//     return "xin chao, " . $name;
+// })->where('name', '[a-z]{4}');
+
+// route variables
+Route::get('/{name?}', function($name = 'trangchu'){
+    return view($name);
+});
+ 
+
+Route::group(['as' => 'name.'], function () {
+    Route::get('/{name?}', function ($name = 'trangchu') {
+        return view($name);
+    })->name('view');
+});
