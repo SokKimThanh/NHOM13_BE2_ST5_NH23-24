@@ -63,5 +63,7 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'checkAge' => \App\Http\Middleware\CheckAge::class,// gan middleware checkage 1 trang
+        'checkLogin' => \App\Http\Middleware\CheckLogin::class,// gan middleware checklogin
     ];
 }

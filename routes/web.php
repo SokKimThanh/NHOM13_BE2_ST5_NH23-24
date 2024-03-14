@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::get('/user/{name}',function($name){
 //     return "xin chao, " . $name;
@@ -43,7 +43,7 @@ Route::get('/', function () {
 // });
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
-//==============================ONTAP=======================================
+//==============================ONTAP========================================
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
 //14/03/2024
@@ -63,7 +63,49 @@ Route::get('/', function () {
 // })->where('id', '\d{5}tt\d{4}');
 
 // Route đặt tên 
-Route::get('/home', function () {
-    return view('ontap');
-})->name('home');
+// Route::get('/home', function () {
+//     return view('ontap');
+// })->name('home');
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+//==============================middleware===================================
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+// Route::get('admin/{age}', function($age){
+//     return "Ban du tuoi truy cap trang nay";
+// })->middleware('checkAge');
 
+
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+//=============== exe3 middle ware kiem tra user pass login==================
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+
+//trang kiem tra dang nhap + chuyen trang
+Route::post("/login", function () {
+    return view('/'); // kiem tra middle ware truoc khi vao trang nay
+})->middleware('checkLogin'); // xu ly middle ware
+
+// trang dang nhap
+Route::get("/{name?}", function ($name = "trangchu") {
+    return view($name); // dang nhap thanh cong chuyen trang success
+})->name("name");
+
+
+
+// trang chủ đặt tên lại là index
+Route::get(
+    /** Trình duyệt đường dẫn URL: 127.1.0.0:8000/ */
+    "/",
+
+    function () {
+        return view(
+            /** Đi đến file tên là "trangchu.blade.php" */
+            "/trangchu"
+        );
+    }
+)->name(
+    /** Đặt tên route này là index: {{ route('index') }}*/
+    "index"
+);
