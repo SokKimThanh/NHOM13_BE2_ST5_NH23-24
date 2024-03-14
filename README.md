@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 # NHOM1_BE2_CT2_NH23-24
 Nhóm 1 - BE2 Chiều thứ 2 - Năm học 2023-2024 Nhóm trưởng: Sok Kim Thanh, Nhóm viên: Trần Thanh Vũ, Lê Văn Đức, Lê Công Chiến, Võ Tú. 
-=======
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -68,4 +66,3 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
->>>>>>> 951adb659afeb729bc686dcc7dfac6993539ff13
