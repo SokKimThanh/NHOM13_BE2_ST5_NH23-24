@@ -43,7 +43,7 @@ use Illuminate\Support\Facades\Route;
 // });
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
-//==============================ONTAP=======================================
+//==============================ONTAP========================================
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
 //14/03/2024
@@ -66,30 +66,46 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/home', function () {
 //     return view('ontap');
 // })->name('home');
-
-// =============================middleware====================================
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+//==============================middleware===================================
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 // Route::get('admin/{age}', function($age){
 //     return "Ban du tuoi truy cap trang nay";
 // })->middleware('checkAge');
 
-//============================================================================
-//============================================================================
-// exe3 middle ware kiem tra user pass login
-//============================================================================
-//============================================================================
 
-// trang dang nhap
-Route::get("/login", function(){
-    return view("login");// dang nhap thanh cong chuyen trang success
-})->name("login");
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+//=============== exe3 middle ware kiem tra user pass login==================
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 
 //trang kiem tra dang nhap + chuyen trang
-Route::post("/checkLogin", function(){
-    return view('loginsuccess');// kiem tra middle ware truoc khi vao trang nay
-})->middleware('checkLogin');// xu ly middle ware
+Route::post("/login", function () {
+    return view('/'); // kiem tra middle ware truoc khi vao trang nay
+})->middleware('checkLogin'); // xu ly middle ware
+
+// trang dang nhap
+Route::get("/{name?}", function ($name = "trangchu") {
+    return view($name); // dang nhap thanh cong chuyen trang success
+})->name("name");
 
 
-// trang dang nhap thanh cong
-Route::get("/loginsuccess", function(){
-    return view("loginsuccess");// dang nhap thanh cong chuyen trang success
-})->middleware('checkLogin');
+
+// trang chủ đặt tên lại là home
+Route::get(
+    /**Tên đường dẫn URL: 127.1.0.0:8000/home */
+    "/",
+
+    function () {
+        return view(
+            /**Tên file là trangchu.blade.php */
+            "/trangchu"
+        );
+    }
+)->name(
+    /** Đặt tên route này là index: {{ route('index') }}*/
+    "index"
+);

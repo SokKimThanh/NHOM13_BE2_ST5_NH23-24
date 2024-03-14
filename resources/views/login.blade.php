@@ -20,7 +20,7 @@
         <p>Vui long nhap thong tin dang nhap</p>
     </div>
     <section>
-        <form action="/loginsuccess" method="post">
+        <form action="/login" method="post">
             @csrf
             <div class="imgcontainer">
                 <img src="{{ asset('/images/img_avatar2.png') }}" alt="Avatar" class="avatar">
