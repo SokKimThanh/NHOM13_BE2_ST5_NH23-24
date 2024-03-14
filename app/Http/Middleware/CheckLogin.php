@@ -16,12 +16,12 @@ class CheckLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        //Kiem tra dang nhap thanh cong
+        // checkLogin Kiem tra dang nhap thanh cong
         if($request->username == "admin" && $request->password == "admin"){
-            redirect('/loginsuccess');// chuyen trang loginsuccess.blade.php
+            return redirect('/loginsuccess');// chuyen trang loginsuccess.blade.php
         }
 
-        // false
-        return $next($request);
+        // checkLogin false
+        return redirect("/login"); // dang nhap that bai
     }
 }

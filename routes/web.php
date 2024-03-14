@@ -79,11 +79,17 @@ use Illuminate\Support\Facades\Route;
 //============================================================================
 
 // trang dang nhap
-Route::get("/", function(){
-    return view("login");
+Route::get("/login", function(){
+    return view("login");// dang nhap thanh cong chuyen trang success
 })->name("login");
 
 //trang kiem tra dang nhap + chuyen trang
-Route::post("/", function(){
-    return "Dang nhap thanh cong";// kiem tra middle ware truoc khi vao trang nay
+Route::post("/checkLogin", function(){
+    return view('loginsuccess');// kiem tra middle ware truoc khi vao trang nay
 })->middleware('checkLogin');// xu ly middle ware
+
+
+// trang dang nhap thanh cong
+Route::get("/loginsuccess", function(){
+    return view("loginsuccess");// dang nhap thanh cong chuyen trang success
+})->middleware('checkLogin');
