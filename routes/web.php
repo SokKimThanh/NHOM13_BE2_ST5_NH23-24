@@ -94,14 +94,14 @@ Route::get("/{name?}", function ($name = "trangchu") {
 
 
 
-// trang chủ đặt tên lại là home
+// trang chủ đặt tên lại là index
 Route::get(
-    /**Tên đường dẫn URL: 127.1.0.0:8000/home */
+    /** Trình duyệt đường dẫn URL: 127.1.0.0:8000/ */
     "/",
 
     function () {
         return view(
-            /**Tên file là trangchu.blade.php */
+            /** Đi đến file tên là "trangchu.blade.php" */
             "/trangchu"
         );
     }
