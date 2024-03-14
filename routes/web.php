@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::get('/user/{name}',function($name){
 //     return "xin chao, " . $name;
@@ -68,6 +68,22 @@ Route::get('/', function () {
 // })->name('home');
 
 // =============================middleware====================================
-Route::get('admin', function($age){
-    return "Ban du tuoi truy cap trang nay";
-})->middleware('checkAge');
+// Route::get('admin/{age}', function($age){
+//     return "Ban du tuoi truy cap trang nay";
+// })->middleware('checkAge');
+
+//============================================================================
+//============================================================================
+// exe3 middle ware kiem tra user pass login
+//============================================================================
+//============================================================================
+
+// trang dang nhap
+Route::get("/", function(){
+    return view("login");
+})->name("login");
+
+//trang kiem tra dang nhap + chuyen trang
+Route::post("/", function(){
+    return "Dang nhap thanh cong";// kiem tra middle ware truoc khi vao trang nay
+})->middleware('checkLogin');// xu ly middle ware
