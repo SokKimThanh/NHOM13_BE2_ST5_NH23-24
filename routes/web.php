@@ -63,7 +63,11 @@ Route::get('/', function () {
 // })->where('id', '\d{5}tt\d{4}');
 
 // Route đặt tên 
-Route::get('/home', function () {
-    return view('ontap');
-})->name('home');
+// Route::get('/home', function () {
+//     return view('ontap');
+// })->name('home');
 
+// =============================middleware====================================
+Route::get('admin', function($age){
+    return "Ban du tuoi truy cap trang nay";
+})->middleware('checkAge');
