@@ -47,7 +47,7 @@ class ProductController extends Controller
     {
         echo "Show product $id";
     }
-
+    //skcmskmckdmcxskkcgit 
     /**
      * Show the form for editing the specified resource.
      *
