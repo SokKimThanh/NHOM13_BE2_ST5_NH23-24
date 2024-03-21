@@ -23,6 +23,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('name', ['name' => 'login']) }}">Đăng nhập</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('name', ['name' => 'signup']) }}">Đăng Ky</a>
+            </li>
         </ul>
     </div>
 </nav>
