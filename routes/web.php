@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\SignupController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -109,3 +110,20 @@ Route::get(
     /** Đặt tên route này là index: {{ route('index') }}*/
     "index"
 );
+//---------------------------------------------------------------------------
+// Tao Request
+//---------------------------------------------------------------------------
+ 
+// Route::post("process", function(Request $request){
+//     return "Xin chao " . $request->username;
+// });
+
+//---------------------------------------------------------------------------
+// Tao Controller
+//---------------------------------------------------------------------------
+Route::post("process", [SignupController::class,"process_signup"]);
+
+//---------------------------------------------------------------------------
+// Tao Resource 7 phuong thuc
+//---------------------------------------------------------------------------
+Route::resource("product", ProductController::Class);
