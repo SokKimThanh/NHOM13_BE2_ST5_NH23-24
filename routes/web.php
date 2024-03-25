@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 /*
@@ -126,4 +127,15 @@ Route::post("process", [SignupController::class,"process_signup"]);
 //---------------------------------------------------------------------------
 // Tao Resource 7 phuong thuc
 //---------------------------------------------------------------------------
-Route::resource("product", ProductController::Class);
+// Route::resource("product", ProductController::Class);
+
+//---------------------------------------------------------------------------
+// Tuan 5: migrattion db:seed template bootstrap
+//---------------------------------------------------------------------------
+
+Route::get('/{page?}', [WelcomeController::class, 'page'])
+
+
+//---------------------------------------------------------------------------
+// 
+//---------------------------------------------------------------------------
