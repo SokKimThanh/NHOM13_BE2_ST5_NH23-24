@@ -127,3 +127,11 @@ Route::post("process", [SignupController::class,"process_signup"]);
 // Tao Resource 7 phuong thuc
 //---------------------------------------------------------------------------
 Route::resource("product", ProductController::Class);
+
+
+//---------------------------------------------------------------------------
+// button animation
+//---------------------------------------------------------------------------
+Route::get("/button", function () {
+    return view('button'); // kiem tra middle ware truoc khi vao trang nay
+});
