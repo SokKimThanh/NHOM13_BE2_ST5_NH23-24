@@ -3,6 +3,7 @@
 use App\Http\Controllers\SignupController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controller\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
