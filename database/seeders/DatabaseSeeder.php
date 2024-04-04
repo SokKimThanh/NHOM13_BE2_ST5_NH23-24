@@ -21,28 +21,6 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        DB::table("products")->insert([
-            [
-                'name' => 'sanpham1',
-                'price' =>  '1.00',
-                'image' => 'sanpham1.jpg',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name' => 'sanpham2',
-                'price' =>  '1.00',
-                'image' => 'sanpham2.jpg',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name' => 'sanpham3',
-                'price' =>  '1.00',
-                'image' => 'sanpham3.jpg',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
-        ]);
+         
     }
 }
