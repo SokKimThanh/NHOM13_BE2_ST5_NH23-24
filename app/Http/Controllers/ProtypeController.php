@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ProtypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('sanpham', ['products' => $products]);
+        //
     }
 
     /**
@@ -25,7 +23,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        echo "Add product page";
+        //
     }
 
     /**
@@ -36,7 +34,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        echo "Add prodcut to database";
+        //
     }
 
     /**
@@ -47,7 +45,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        echo "Show product $id";
+        //
     }
 
     /**
@@ -58,7 +56,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        echo "Edit product $id";
+        //
     }
 
     /**
@@ -70,7 +68,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        echo "update";
+        //
     }
 
     /**

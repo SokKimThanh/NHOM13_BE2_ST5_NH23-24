@@ -15,11 +15,14 @@
 <body>
     @include('navbar')
 
+    @foreach($products as $row)
     <div class="container-fluid mt-3">
-        <h3>san pham</h3>
-        <p>A navigation bar is a navigation header that is placed at the top of the page.</p>
-        <p>The navbar-expand-xxl|xl|lg|md|sm class determines when the navbar should stack vertically (on xxlarge, extra large, large, medium or small screens).</p>
+        <h3>{{ $row->name }}</h3>
+        <p>{{ $row->price }}</p>
+        <p>{{ $row->image }}</p>
+        <p>{{ $row->protype->protype_name }}</p>
     </div>
+    @endforeach
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
