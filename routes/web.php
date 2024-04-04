@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
@@ -91,9 +92,9 @@ Route::post("/login", function () {
 })->middleware('checkLogin'); // xu ly middle ware
 
 // trang dang nhap
-Route::get("/{name?}", function ($name = "trangchu") {
-    return view($name); // dang nhap thanh cong chuyen trang success
-})->name("name");
+// Route::get("/{name?}", function ($name = "trangchu") {
+//     return view($name); // dang nhap thanh cong chuyen trang success
+// })->name("name");
 
 
 
@@ -134,9 +135,10 @@ Route::post("process", [SignupController::class,"process_signup"]);
 // Tuan 5: migrattion db:seed template bootstrap
 //---------------------------------------------------------------------------
 
-Route::get('/{page?}', [WelcomeController::class, 'page'])
+// Route::get('/{page?}', [WelcomeController::class, 'page'])
 
 
 //---------------------------------------------------------------------------
 // 
 //---------------------------------------------------------------------------
+Route::get('/{page?}', [ProductController::class, 'index'])->name('name');
