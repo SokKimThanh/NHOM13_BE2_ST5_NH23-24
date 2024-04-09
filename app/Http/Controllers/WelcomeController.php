@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
 {
-    public function page($page = "index")
+    public function getPage($page = "index")
     {
-        return view($page);
+        return view('FE/' . $page);
     }
 }
