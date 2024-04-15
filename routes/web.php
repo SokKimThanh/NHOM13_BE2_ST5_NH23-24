@@ -15,8 +15,6 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/check', function(){
-    return view('BE/layout/layout');
-});
 Route::get('/{page?}', [WelcomeController::class, 'getPage'])->name('page');
+Route::get('/manage/layout', [WelcomeController::class, 'getManage']);// Cái này tui làm để test nên ông ko cần thì xóa luôn nhen
 
