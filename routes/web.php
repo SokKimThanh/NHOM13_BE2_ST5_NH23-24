@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/{page?}', [WelcomeController::class, 'getPage'])->name('page');
+Route::get('/manage/layout', [WelcomeController::class, 'getManage']);// Cái này tui làm để test nên ông ko cần thì xóa luôn nhen
 
+<<<<<<< HEAD
 Route::get('/{page?}', [WelcomeController::class, 'page']);
 
 Route::get('/dashboard', function () {
@@ -28,3 +31,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+=======
+>>>>>>> origin/be2_tuan7_template_backend
