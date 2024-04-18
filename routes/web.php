@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/dashboard', function () {
-    return view('dashboard/dashboard');
+    return view('layout/layout');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
@@ -29,7 +29,3 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 Route::get('/{page?}', [WelcomeController::class, 'getPageFrontEnd'])->name('page');
-
-Route::post('/{page?}', [WelcomeController::class, 'getPageFrontEnd'])->middleware(['auth', 'verified'])->name('page');
-
-Route::get('/manage/layout', [WelcomeController::class, 'getManage']);// Cái này tui làm để test nên ông ko cần thì xóa luôn nhen

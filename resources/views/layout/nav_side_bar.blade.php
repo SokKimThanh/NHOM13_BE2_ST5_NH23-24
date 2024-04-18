@@ -27,14 +27,19 @@
         </li>
       </ul>
 
-      <!-- Right navbar links
-      <ul class="navbar-nav ml-auto">      
+      <!-- Right navbar links-->
+      <ul class="navbar-nav ml-auto">   
         <li class="nav-item">
-          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-            <i class="fas fa-expand-arrows-alt"></i>
+          <a class="nav-link" href="{{ route('page', ['page'=>'index']) }}" role="button">
+            <i class="fas fa-expand-arrows-alt">Xem Webside</i>
+          </a>
+        </li>   
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('profile.edit') }}" role="button">
+            <i class="fas fa-expand-arrows-alt">Quản lý tài khoản cá nhân</i>
           </a>
         </li>
-      </ul>-->
+      </ul>
     </nav>
     <!-- /.navbar -->
 
@@ -53,25 +58,25 @@
     <!-- /.Main Sidebar Container -->
 
 
-    <!-- Vùng Content -->
+    <!-- Vùng Content
     <div class="content-wrapper">
       <div class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
               <h1 class="m-0">Dashboard v3</h1>
-            </div><!-- /.col -->
+            </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item active">Dashboard v3</li>
               </ol>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </div>
+            </div>
+          </div>
+        </div>
+      </div>-->
     @yield('content')
-    @extends('BE.layout.footer')    
+    @extends('layout.footer')    
     </div>
     <!-- Đóng Vùng content -->
 
