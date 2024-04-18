@@ -32,6 +32,14 @@ class DatabaseSeeder extends Seeder
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
                 'updated_at' => now()
+            ],
+            [
+                'name' => 'Le Cong Chien',
+                'email' => 'cle960272@gmail.com',
+                'password' => bcrypt('chien122004'),
+                'remember_token' => Str::random(10),
+                'created_at' => now(),
+                'updated_at' => now()
             ]
         ]);
         DB::table("protype")->insert([

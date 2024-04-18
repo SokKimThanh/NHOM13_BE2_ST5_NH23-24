@@ -5878,7 +5878,6 @@
             "time": "2020-07-09T08:09:16+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "laravel/breeze",
             "version": "v1.19.2",
             "source": {
@@ -5941,18 +5940,6 @@
         },
         {
             "name": "laravel/pint",
-            "version": "v1.15.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/pint.git",
-                "reference": "c52de679b3ac01207016c179d7ce173e4be128c4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/pint/zipball/c52de679b3ac01207016c179d7ce173e4be128c4",
-                "reference": "c52de679b3ac01207016c179d7ce173e4be128c4",
-=======
-            "name": "laravel/pint",
             "version": "v1.15.1",
             "source": {
                 "type": "git",
@@ -5963,7 +5950,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/pint/zipball/5f288b5e79938cc72f5c298d384e639de87507c6",
                 "reference": "5f288b5e79938cc72f5c298d384e639de87507c6",
->>>>>>> origin/be2_tuan7_template_backend
                 "shasum": ""
             },
             "require": {
@@ -6016,11 +6002,7 @@
                 "issues": "https://github.com/laravel/pint/issues",
                 "source": "https://github.com/laravel/pint"
             },
-<<<<<<< HEAD
-            "time": "2024-03-26T16:40:24+00:00"
-=======
             "time": "2024-04-02T14:28:47+00:00"
->>>>>>> origin/be2_tuan7_template_backend
         },
         {
             "name": "laravel/sail",
@@ -7951,16 +7933,16 @@
         },
         {
             "name": "spatie/ignition",
-            "version": "1.13.1",
+            "version": "1.13.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/ignition.git",
-                "reference": "889bf1dfa59e161590f677728b47bf4a6893983b"
+                "reference": "952798e239d9969e4e694b124c2cc222798dbb28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/ignition/zipball/889bf1dfa59e161590f677728b47bf4a6893983b",
-                "reference": "889bf1dfa59e161590f677728b47bf4a6893983b",
+                "url": "https://api.github.com/repos/spatie/ignition/zipball/952798e239d9969e4e694b124c2cc222798dbb28",
+                "reference": "952798e239d9969e4e694b124c2cc222798dbb28",
                 "shasum": ""
             },
             "require": {
@@ -8030,7 +8012,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-29T14:03:47+00:00"
+            "time": "2024-04-16T08:49:17+00:00"
         },
         {
             "name": "spatie/laravel-ignition",
