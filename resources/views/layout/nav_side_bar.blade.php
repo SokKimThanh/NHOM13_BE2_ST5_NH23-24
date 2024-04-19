@@ -44,16 +44,113 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">      
       <!-- Brand Logo -->
       <a href="#" class="brand-link bg-success">
-        <span class="brand-text font-weight-light">.</span>
+        <i class="fas">Trang Quản Lý</i>
       </a>
-
+      <div class="sidebar">
       <!-- Sidebar -->
-
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item bg-success rounded mb-2">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Quản Lý Tài Khoản
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm Tài Khoản</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh Sách Tài Khoản</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item bg-success rounded mb-2">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Quản Lý Khách Hàng
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm Khách Hàng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh Sách Khách Hàng</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item bg-success rounded mb-2">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Quản Lý Sản Phẩm
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm Sản Phẩm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh Sách Sản Phẩm</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item bg-success rounded mb-2">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Quản Lý Thành Viên
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm Thành Viên</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link text-light">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh Sách Thành Viên</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
       <!-- /.sidebar -->
+      </div>
     </aside>
     <!-- /.Main Sidebar Container -->
 
