@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('BE/admin/css/adminlte.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('BE/admin/css/styles.css') }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -23,7 +24,7 @@
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><img src="{{ asset('BE/admin/images/toggle.png') }}" alt="" class="icon"></a>
         </li>
       </ul>
 
@@ -31,12 +32,14 @@
       <ul class="navbar-nav ml-auto">   
         <li class="nav-item">
           <a class="nav-link" href="{{ route('page', ['page'=>'index']) }}" role="button">
-            <i class="fas fa-expand-arrows-alt">Xem Webside</i>
+            <img src="{{ asset('BE/admin/images/shop.png') }}" class="icon" alt="">
+            <i class="fas">Xem Webside</i>
           </a>
         </li>   
         <li class="nav-item">
           <a class="nav-link" href="{{ route('profile.edit') }}" role="button">
-            <i class="fas fa-expand-arrows-alt">Quản lý tài khoản cá nhân</i>
+            <img src="{{ asset('BE/admin/images/user.png') }}" class="icon" alt="">
+            <i class="fas">Quản lý tài khoản cá nhân</i>
           </a>
         </li>
       </ul>
@@ -57,22 +60,22 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item bg-success rounded mb-2">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <img src="{{ asset('BE/admin/images/user.png') }}" alt="" class="icon">
               <p>
-                Quản Lý Tài Khoản
-                <i class="right fas fa-angle-left"></i>
+                Quản Lý Tài Khoản                
               </p>
+              <img src="{{ asset('BE/admin/images/down.png') }}" alt="" class="icon down"> 
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link text-light">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('manage', ['page'=>'addAccount']) }}" class="nav-link text-light">
+                  <img src="{{ asset('BE/admin/images/add.png') }}" alt="" class="icon">
                   <p>Thêm Tài Khoản</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link text-light">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('manage', ['page'=>'listAccount']) }}" class="nav-link text-light">
+                  <img src="{{ asset('BE/admin/images/list.png') }}" alt="" class="icon">                  
                   <p>Danh Sách Tài Khoản</p>
                 </a>
               </li>
@@ -80,22 +83,22 @@
           </li>
           <li class="nav-item bg-success rounded mb-2">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <img src="{{ asset('BE/admin/images/customer.png') }}" alt="" class="icon">              
               <p>
-                Quản Lý Khách Hàng
-                <i class="right fas fa-angle-left"></i>
+                Quản Lý Khách Hàng                
               </p>
+              <img src="{{ asset('BE/admin/images/down.png') }}" alt="" class="icon down"> 
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link text-light">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('manage', ['page'=>'addCustomer']) }}" class="nav-link text-light">
+                  <img src="{{ asset('BE/admin/images/add.png') }}" alt="" class="icon">                  
                   <p>Thêm Khách Hàng</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link text-light">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('manage', ['page'=>'listCustomer']) }}" class="nav-link text-light">
+                  <img src="{{ asset('BE/admin/images/list.png') }}" alt="" class="icon">                  
                   <p>Danh Sách Khách Hàng</p>
                 </a>
               </li>
@@ -103,22 +106,22 @@
           </li>
           <li class="nav-item bg-success rounded mb-2">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <img src="{{ asset('BE/admin/images/product.png') }}" alt="" class="icon">                     
               <p>
-                Quản Lý Sản Phẩm
-                <i class="right fas fa-angle-left"></i>
+                Quản Lý Sản Phẩm                
               </p>
+              <img src="{{ asset('BE/admin/images/down.png') }}" alt="" class="icon down"> 
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link text-light">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('manage', ['page'=>'addProduct']) }}" class="nav-link text-light">
+                  <img src="{{ asset('BE/admin/images/add.png') }}" alt="" class="icon">                  
                   <p>Thêm Sản Phẩm</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link text-light">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('manage', ['page'=>'listProduct']) }}" class="nav-link text-light">
+                  <img src="{{ asset('BE/admin/images/list.png') }}" alt="" class="icon">                  
                   <p>Danh Sách Sản Phẩm</p>
                 </a>
               </li>
@@ -126,22 +129,22 @@
           </li>
           <li class="nav-item bg-success rounded mb-2">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <img src="{{ asset('BE/admin/images/member.png') }}" alt="" class="icon">                     
               <p>
-                Quản Lý Thành Viên
-                <i class="right fas fa-angle-left"></i>
+                Quản Lý Thành Viên                
               </p>
+              <img src="{{ asset('BE/admin/images/down.png') }}" alt="" class="icon down"> 
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link text-light">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('manage', ['page'=>'addMember']) }}" class="nav-link text-light">
+                  <img src="{{ asset('BE/admin/images/add.png') }}" alt="" class="icon">                  
                   <p>Thêm Thành Viên</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link text-light">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('manage', ['page'=>'listMember']) }}" class="nav-link text-light">
+                  <img src="{{ asset('BE/admin/images/list.png') }}" alt="" class="icon">                  
                   <p>Danh Sách Thành Viên</p>
                 </a>
               </li>
@@ -155,9 +158,9 @@
     <!-- /.Main Sidebar Container -->
 
 
-    <!-- Vùng Content
+    <!-- Vùng Content-->
     <div class="content-wrapper">
-      <div class="content-header">
+    <!--  <div class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">

@@ -11,8 +11,8 @@ class WelcomeController extends Controller
     {
         return view('FE/' . $page);
     }
-    public function getPageBackEnd($page = 'dashboard')
+    public function getPageBackEnd($page = 'layout')
     {
-        
+        return view('layout/' . $page);
     }
 }

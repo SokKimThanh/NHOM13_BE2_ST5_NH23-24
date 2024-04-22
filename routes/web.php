@@ -29,3 +29,4 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 Route::get('/{page?}', [WelcomeController::class, 'getPageFrontEnd'])->name('page');
+Route::get('/manage/{page?}', [WelcomeController::class, 'getPageBackEnd'])->name('manage');
