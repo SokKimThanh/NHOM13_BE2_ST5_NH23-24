@@ -46,17 +46,17 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table("protype")->insert([
             [
-                'protype_name' => 'laptop',
+                'protype_name' => 'Truyền thống',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'protype_name' => 'maytinhbang',
+                'protype_name' => 'Cách tân',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'protype_name' => 'dienthoai',
+                'protype_name' => 'Tay bồng',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
         
         DB::table("products")->insert([
             [
-                'name' => 'sanpham1',
+                'name' => 'Áo dài cách tân 01',
                 'price' =>  '1.00',
                 'image' => 'sanpham1.jpg',
                 'protype_id' => '1',
@@ -72,7 +72,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'name' => 'sanpham2',
+                'name' => 'Áo dài truyền thống 01',
                 'price' =>  '1.00',
                 'image' => 'sanpham2.jpg',
                 'protype_id' => '1',
@@ -80,7 +80,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'name' => 'sanpham3',
+                'name' => 'Áo dài tay bồng C1',
                 'price' =>  '1.00',
                 'image' => 'sanpham3.jpg',
                 'protype_id' => '2',
@@ -88,25 +88,25 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'name' => 'sanpham3',
+                'name' => 'Áo dài cách tân 02',
                 'price' =>  '1.00',
-                'image' => 'sanpham3.jpg',
+                'image' => 'sanpham4.jpg',
                 'protype_id' => '2',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name' => 'sanpham3',
+                'name' => 'Áo dài cách tân 03',
                 'price' =>  '1.00',
-                'image' => 'sanpham3.jpg',
+                'image' => 'sanpham5.jpg',
                 'protype_id' => '3',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name' => 'sanpham3',
+                'name' => 'Áo dài truyền thống 02',
                 'price' =>  '1.00',
-                'image' => 'sanpham3.jpg',
+                'image' => 'sanpham6.jpg',
                 'protype_id' => '3',
                 'created_at' => now(),
                 'updated_at' => now(),
