@@ -5,7 +5,6 @@
     <ol class="carousel-indicators">
         <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
         <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
-        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
     </ol>
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -37,19 +36,19 @@
     </div>
     <div class="row">
         <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="{{ route('page', ['page'=>'shop']) }}"><img src="{{ asset('FE/assets/img/sanpham2.jpg') }}" class="rounded-circle img-fluid border"></a>
+            <a href="{{ route('protype', ['id'=>1]) }}"><img src="{{ asset('FE/assets/img/sanpham2.jpg') }}" class="rounded-circle img-fluid border"></a>
             <h5 class="text-center mt-3 mb-3">Truyền Thống</h5>
-            <p class="text-center"><a href="{{ route('page', ['page'=>'shop']) }}" class="btn btn-success">Vào Mua Sắm</a></p>
+            <p class="text-center"><a href="{{ route('protype', ['id'=>1]) }}" class="btn btn-success">Vào Mua Sắm</a></p>
         </div>
         <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="{{ route('page', ['page'=>'shop']) }}"><img src="{{ asset('FE/assets/img/sanpham1.jpg') }}" class="rounded-circle img-fluid border"></a>
+            <a href="{{ route('protype', ['id'=>2]) }}"><img src="{{ asset('FE/assets/img/sanpham1.jpg') }}" class="rounded-circle img-fluid border"></a>
             <h2 class="h5 text-center mt-3 mb-3">Cách Tân</h2>
-            <p class="text-center"><a href="{{ route('page', ['page'=>'shop']) }}" class="btn btn-success">Vào Mua Sắm</a></p>
+            <p class="text-center"><a href="{{ route('protype', ['id'=>2]) }}" class="btn btn-success">Vào Mua Sắm</a></p>
         </div>
         <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="{{ route('page', ['page'=>'shop']) }}"><img src="{{ asset('FE/assets/img/sanpham3.jpg') }}" class="rounded-circle img-fluid border"></a>
+            <a href="{{ route('protype', ['id'=>3]) }}"><img src="{{ asset('FE/assets/img/sanpham3.jpg') }}" class="rounded-circle img-fluid border"></a>
             <h2 class="h5 text-center mt-3 mb-3">Tay Bồng</h2>
-            <p class="text-center"><a href="{{ route('page', ['page'=>'shop']) }}" class="btn btn-success">Vào Mua Sắm</a></p>
+            <p class="text-center"><a href="{{ route('protype', ['id'=>3]) }}" class="btn btn-success">Vào Mua Sắm</a></p>
         </div>
     </div>
 </section>
@@ -68,15 +67,16 @@
             @foreach($products as $row)
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
-                    <a href="shop-single.html">
+                    <a href="{{ route('page', ['page'=>'detail' . $row -> id]) }}">
                         <img src="{{ asset('FE/assets/img/' . $row -> image) }}" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">
-                        <p class="text-center"><li class="text-muted text-right">{{$row -> price}}</li></p>
+                            <p class="text-center"><li class="text-muted text-right">{{$row -> price}}</li></p>
                         </ul>
-                        <p class="text-center"><a href="shop-single.html" class="h2 text-decoration-none text-dark">{{$row -> name}}</a></p>
-                        <br><p class="text-center"><a class="btn btn-success">Thêm Vào Giỏ Hàng</a></p>
+                        <p class="text-center"><a href="{{ route('page', ['page'=>'detail' . $row -> id]) }}" class="h2 text-decoration-none text-dark">{{$row -> name}}</a></p>
+                        <p class="text-center mb-0 mt-1">{{$row -> protype -> protype_name}}</p>
+                        <br><p class="text-center"><a href="#" class="btn btn-success">Thêm Vào Giỏ Hàng</a></p>
                     </div>
                 </div>
             </div>

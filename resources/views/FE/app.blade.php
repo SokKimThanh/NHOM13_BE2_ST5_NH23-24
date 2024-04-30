@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-    <title>Zay Shop eCommerce HTML CSS Template</title>
+    <title>Hồng Đức - Hệ Thống Siêu Thị Áo Dài</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="{{ asset('FE/assets/img/apple-icon.png') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('FE/assets/img/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('FE/assets/img/nangtho.jpg') }}">
 
     <link rel="stylesheet" href="{{ asset('FE/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('FE/assets/css/templatemo.css') }}">
@@ -32,9 +32,9 @@
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">hongduc@gmail.com</a>
                     <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">022-308-495-723</a>
                 </div>
                 <div>
                     <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
@@ -70,7 +70,7 @@
                             <a class="nav-link" href="{{ route('page', ['page'=>'about']) }}">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('page', ['page'=>'shop']) }}">Shop</a>
+                            <a class="nav-link" href="{{ route('page', ['page'=>'shop1']) }}">Shop</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('page', ['page'=>'contact']) }}">Contact</a>
@@ -131,7 +131,7 @@
             <div class="row">
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Zay Shop</h2>
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">HDStore</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
@@ -139,36 +139,32 @@
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                            <a class="text-decoration-none" href="tel:010-020-0340">022-308-495-723</a>
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                            <a class="text-decoration-none" href="mailto:info@company.com">hongduc@gmail.com</a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Danh mục</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Luxury</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Wear</a></li>
-                        <li><a class="text-decoration-none" href="#">Men's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Women's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Popular Dress</a></li>
-                        <li><a class="text-decoration-none" href="#">Gym Accessories</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Shoes</a></li>
+                        @foreach($protypes as $row)      
+                        <li><a class="text-decoration-none" href="{{ route('protype', ['id' => $row -> id]) }}">{{$row -> protype_name}}</a></li>
+                        @endforeach
                     </ul>
                 </div>
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Thông Tin Khác</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Home</a></li>
-                        <li><a class="text-decoration-none" href="#">About Us</a></li>
-                        <li><a class="text-decoration-none" href="#">Shop Locations</a></li>
+                        <li><a class="text-decoration-none" href="{{ route('page', ['page' => 'index']) }}">Home</a></li>
+                        <li><a class="text-decoration-none" href="{{ route('page', ['page' => 'about']) }}">About Us</a></li>
+                        <li><a class="text-decoration-none" href="{{ route('page', ['page' => 'shop']) }}">Shop Locations</a></li>
                         <li><a class="text-decoration-none" href="#">FAQs</a></li>
-                        <li><a class="text-decoration-none" href="#">Contact</a></li>
+                        <li><a class="text-decoration-none" href="{{ route('page', ['page' => 'contact']) }}">Contact</a></li>
                     </ul>
                 </div>
 

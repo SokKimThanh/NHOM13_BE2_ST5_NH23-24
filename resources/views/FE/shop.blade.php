@@ -7,18 +7,8 @@
     <div class="row">
 
         <div class="col-lg-3">
-            <h1 class="h2 pb-4">Categories</h1>
+            <h1 class="h2 pb-4">Danh Mục</h1>
             <ul class="list-unstyled templatemo-accordion">
-                <li class="pb-3">
-                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                        Giới Tính
-                        <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
-                    </a>
-                    <ul class="collapse show list-unstyled pl-3">
-                        <li><a class="text-decoration-none" href="#">Nam</a></li>
-                        <li><a class="text-decoration-none" href="#">Nữ</a></li>
-                    </ul>
-                </li>
                 <li class="pb-3">
                     <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
                         Mẫu Áo Dài
@@ -26,7 +16,7 @@
                     </a>
                     <ul id="collapseThree" class="collapse list-unstyled pl-3">
                         @foreach($protypes as $row)                        
-                        <li><a class="text-decoration-none" href="#">{{$row -> protype_name}}</a></li>
+                        <li class="ms-3"><a class="text-decoration-none" href="{{ route('protype', ['id' => $row -> id]) }}">{{$row -> protype_name}}</a></li>
                         @endforeach
                     </ul>
                 </li>
@@ -35,62 +25,42 @@
 
         <div class="col-lg-9">
             <div class="row">
-                <div class="col-md-6">
-                    <ul class="list-inline shop-top-menu pb-3 pt-1">
-                        <li class="list-inline-item">
-                            <a class="h3 text-dark text-decoration-none mr-3" href="#">All</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="h3 text-dark text-decoration-none mr-3" href="#">Nam</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="h3 text-dark text-decoration-none" href="#">Nữ</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-6 pb-4">
-                    <div class="d-flex">
-                        <select class="form-control">
-                            <option>Featured</option>
-                            <option>A to Z</option>
-                            <option>Item</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                @foreach($products as $row)
+                @foreach($products as $key => $row)
+                @if($key >= (($pageShop - 1) * 6) && $key < ($pageShop * 6))
                 <div class="col-md-4">
                     <div class="card mb-4 product-wap rounded-0">
                         <div class="card rounded-0">
                             <img class="card-img rounded-0 img-fluid" src="{{ asset('FE/assets/img/' . $row -> image) }}">
                             <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                 <ul class="list-unstyled">
-                                    <li><a class="btn btn-success text-white" href="{{ route('page', ['page'=>'shop-single']) }}"><i class="far fa-heart"></i></a></li>
-                                    <li><a class="btn btn-success text-white mt-2" href="{{ route('page', ['page'=>'shop-single']) }}"><i class="far fa-eye"></i></a></li>
-                                    <li><a class="btn btn-success text-white mt-2" href="{{ route('page', ['page'=>'shop-single']) }}"><i class="fas fa-cart-plus"></i></a></li>
+                                    <li><a class="btn btn-success text-white mt-2" href="{{ route('page', ['page'=>'detail' . $row -> id]) }}"><i class="far fa-eye"></i></a></li>
+                                    <li><a class="btn btn-success text-white mt-2" href="{{ route('page', ['page'=>'detail' . $row -> id]) }}"><i class="fas fa-cart-plus"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="card-body">
-                            <a href="{{ route('page', ['page'=>'shop-single']) }}" class="h3 text-decoration-none">{{$row -> name}}</a>
+                            <a class="text-decoration-none" href="{{ route('page', ['page'=>'detail' . $row -> id]) }}"><h5 class="text-center mt-3 mb-3">{{$row -> name}}</h5></a>
+                            <p class="text-center mb-0 mt-1">Mẫu {{$row -> protype -> protype_name}}</p>
                             <p class="text-center mb-0 mt-1">{{$row -> price}}</p>
                         </div>
                     </div>
                 </div>
+                @endif
                 @endforeach
             </div>
             <div div="row">
                 <ul class="pagination pagination-lg justify-content-end">
-                    <li class="page-item disabled">
-                        <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="#" tabindex="-1">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark" href="#">3</a>
-                    </li>
+                    @for($x = 1; $x <= $pages;$x++)
+                    @if($x == $pageShop)                    
+                        <li class="page-item disabled">
+                            <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="#" tabindex="-1">{{$x}}</a>
+                        </li>
+                    @else                    
+                        <li class="page-item">
+                            <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="{{ route('page', ['page'=>'shop' . $x]) }}">{{$x}}</a>
+                        </li>
+                    @endif
+                    @endfor
                 </ul>
             </div>
         </div>
