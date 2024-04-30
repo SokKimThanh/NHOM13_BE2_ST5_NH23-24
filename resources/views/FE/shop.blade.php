@@ -34,14 +34,15 @@
                             <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                 <ul class="list-unstyled">
                                     <li><a class="btn btn-success text-white mt-2" href="{{ route('page', ['page'=>'detail' . $row -> id]) }}"><i class="far fa-eye"></i></a></li>
-                                    <li><a class="btn btn-success text-white mt-2" href="{{ route('page', ['page'=>'detail' . $row -> id]) }}"><i class="fas fa-cart-plus"></i></a></li>
+                                    <li><a class="btn btn-success text-white mt-2" href="#"><i class="fas fa-cart-plus"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="card-body">
-                            <a class="text-decoration-none" href="{{ route('page', ['page'=>'detail' . $row -> id]) }}"><h5 class="text-center mt-3 mb-3">{{$row -> name}}</h5></a>
-                            <p class="text-center mb-0 mt-1">Mẫu {{$row -> protype -> protype_name}}</p>
-                            <p class="text-center mb-0 mt-1">{{$row -> price}}</p>
+                            <p class="text-center mb-0 text-muted">{{$row -> price}}</p>
+                            <a class="text-decoration-none" href="{{ route('page', ['page'=>'detail' . $row -> id]) }}"><h5 class="text-center mt-3 bg-name py-1">{{$row -> name}}</h5></a>
+                            <p class="text-center mb-0">Mẫu {{$row -> protype -> protype_name}}</p>
+                            <p class="text-center mb-0 mt-1 {{($row -> quantity) > 0 ? '' : 'text-muted'}}">{{($row -> quantity) > 0 ? 'Kho Hàng: ' . $row->quantity : 'Đã Bán Hết'}}</p>
                         </div>
                     </div>
                 </div>

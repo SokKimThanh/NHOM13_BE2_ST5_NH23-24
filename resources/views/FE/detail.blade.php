@@ -15,15 +15,15 @@
                     <div class="card-body">
                         <h1>{{$product -> name}}</h1>
                         <p class="h3 py-2">{{$product -> price}}</p>
-                        <ul class="list-inline">
+                        <ul class="list-inline mb-0">
                             <li class="list-inline-item">
-                                <h6>Danh Mục: </h6>
+                                <h6>Danh Mục:</h6>
                             </li>
                             <li class="list-inline-item">
                                 <p class="text-muted"><strong>{{$protype}}</strong></p>
                             </li>
                         </ul>
-
+                        <p class="mb-1 {{($product -> quantity) > 0 ? '' : 'text-muted'}}">Trạng Thái {{($product -> quantity) > 0 ? 'Kho Hàng: ' . $product->quantity : 'Đã Bán Hết'}}</p>
                         <h6>Mô Tả Chi Tiết:</h6>
                         <p>{{$product -> description}}</p>
                         <form action="" method="GET">
@@ -43,10 +43,10 @@
                             </div>
                             <div class="row pb-3">
                                 <div class="col d-grid">
-                                    <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
+                                    <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy" {{($product -> quantity) > 0 ? '' : 'disabled'}}>Buy</button>
                                 </div>
                                 <div class="col d-grid">
-                                    <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button>
+                                    <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard" {{($product -> quantity) > 0 ? '' : 'disabled'}}>Add To Cart</button>
                                 </div>
                             </div>
                         </form>
