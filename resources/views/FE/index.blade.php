@@ -75,7 +75,6 @@
                             <p class="text-center"><li class="text-muted">{{$row -> price}}</li></p>
                         </ul>
                         <p class="text-center bg-success m-0 pt-1"><a href="{{ route('page', ['page'=>'detail' . $row -> id]) }}" class="h2 text-decoration-none text-white">{{$row -> name}}</a></p>
-                        <p class="text-center mb-0 mt-1">{{$row -> protype -> protype_name}}</p>
                         <p class="text-center mb-0 mt-1 {{($row -> quantity) > 0 ? '' : 'text-muted'}}">{{($row -> quantity) > 0 ? 'Kho Hàng: ' . $row->quantity : 'Đã Bán Hết'}}</p>
                         <br><p class="text-center"><a href="#" class="btn btn-success">Thêm Vào Giỏ Hàng</a></p>
                     </div>
