@@ -41,7 +41,7 @@
                         <div class="card-body">
                             <a class="text-decoration-none text-white" href="{{ route('page', ['page'=>'detail' . $row -> id]) }}"><h5 class="text-center mt-3 bg-success py-1">{{$row -> name}}</h5></a>
                             <p class="text-center mb-0">{{number_format($row -> price)}}₫</p>
-                            <p class="text-center mb-0 mt-1 {{($row -> quantity) > 0 ? '' : 'text-muted'}}">{{($row -> quantity) > 0 ? 'Kho Hàng: ' . $row->quantity : 'Đã Bán Hết'}}</p>
+                            <p class="text-center mb-0 mt-1 {{($row -> quantity) > 0 ? '' : 'text-muted'}}">{{($row -> quantity) > 0 ? 'Còn Lại: ' . $row->quantity : 'Đã Bán Hết'}}</p>
                         </div>
                     </div>
                 </div>
