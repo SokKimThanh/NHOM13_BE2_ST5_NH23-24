@@ -39,9 +39,8 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <p class="text-center mb-0 text-muted">{{$row -> price}}</p>
-                            <a class="text-decoration-none" href="{{ route('page', ['page'=>'detail' . $row -> id]) }}"><h5 class="text-center mt-3 bg-name py-1">{{$row -> name}}</h5></a>
-                            <p class="text-center mb-0">Mẫu {{$row -> protype -> protype_name}}</p>
+                            <a class="text-decoration-none text-white" href="{{ route('page', ['page'=>'detail' . $row -> id]) }}"><h5 class="text-center mt-3 bg-success py-1">{{$row -> name}}</h5></a>
+                            <p class="text-center mb-0">{{number_format($row -> price)}}₫</p>
                             <p class="text-center mb-0 mt-1 {{($row -> quantity) > 0 ? '' : 'text-muted'}}">{{($row -> quantity) > 0 ? 'Kho Hàng: ' . $row->quantity : 'Đã Bán Hết'}}</p>
                         </div>
                     </div>
@@ -101,58 +100,38 @@
                                 <div class="carousel-item active">
                                     <div class="row">
                                         <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_01.png') }}" alt="Brand Logo"></a>
+                                            <a href="#"><img class="img-fluid" src="{{ asset('FE/assets/img/nangtho.jpg') }}" alt="Brand Logo"></a>
                                         </div>
                                         <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_02.png') }}" alt="Brand Logo"></a>
+                                            <a href="#"><img class="img-fluid" src="{{ asset('FE/assets/img/vceo.jpg') }}" alt="Brand Logo"></a>
                                         </div>
                                         <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_03.png') }}" alt="Brand Logo"></a>
+                                            <a href="#"><img class="img-fluid" src="{{ asset('FE/assets/img/moclan.jpg') }}" alt="Brand Logo"></a>
                                         </div>
                                         <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_04.png') }}" alt="Brand Logo"></a>
+                                            <a href="#"><img class="img-fluid" src="{{ asset('FE/assets/img/yenhai.jpg') }}" alt="Brand Logo"></a>
                                         </div>
                                     </div>
                                 </div>
                                 <!--End First slide-->
-
                                 <!--Second slide-->
                                 <div class="carousel-item">
                                     <div class="row">
                                         <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_01.png') }}" alt="Brand Logo"></a>
+                                            <a href="#"><img class="img-fluid" src="{{ asset('FE/assets/img/nangtho.jpg') }}" alt="Brand Logo"></a>
                                         </div>
                                         <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_02.png') }}" alt="Brand Logo"></a>
+                                            <a href="#"><img class="img-fluid" src="{{ asset('FE/assets/img/vceo.jpg') }}" alt="Brand Logo"></a>
                                         </div>
                                         <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_03.png') }}" alt="Brand Logo"></a>
+                                            <a href="#"><img class="img-fluid" src="{{ asset('FE/assets/img/moclan.jpg') }}" alt="Brand Logo"></a>
                                         </div>
                                         <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_04.png') }}" alt="Brand Logo"></a>
+                                            <a href="#"><img class="img-fluid" src="{{ asset('FE/assets/img/yenhai.jpg') }}" alt="Brand Logo"></a>
                                         </div>
                                     </div>
                                 </div>
                                 <!--End Second slide-->
-
-                                <!--Third slide-->
-                                <div class="carousel-item">
-                                    <div class="row">
-                                        <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_01.png') }}" alt="Brand Logo"></a>
-                                        </div>
-                                        <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_02.png') }}" alt="Brand Logo"></a>
-                                        </div>
-                                        <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_03.png') }}" alt="Brand Logo"></a>
-                                        </div>
-                                        <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_04.png') }}" alt="Brand Logo"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--End Third slide-->
 
                             </div>
                             <!--End Slides-->
