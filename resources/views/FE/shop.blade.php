@@ -34,14 +34,14 @@
                             <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                 <ul class="list-unstyled">
                                     <li><a class="btn btn-success text-white mt-2" href="{{ route('page', ['page'=>'detail' . $row -> id]) }}"><i class="far fa-eye"></i></a></li>
-                                    <li><a class="btn btn-success text-white mt-2" href="{{ route('page', ['page'=>'detail' . $row -> id]) }}"><i class="fas fa-cart-plus"></i></a></li>
+                                    <li><a class="btn btn-success text-white mt-2" href="#"><i class="fas fa-cart-plus"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="card-body">
-                            <a class="text-decoration-none" href="{{ route('page', ['page'=>'detail' . $row -> id]) }}"><h5 class="text-center mt-3 mb-3">{{$row -> name}}</h5></a>
-                            <p class="text-center mb-0 mt-1">Mẫu {{$row -> protype -> protype_name}}</p>
-                            <p class="text-center mb-0 mt-1">{{$row -> price}}</p>
+                            <a class="text-decoration-none text-white" href="{{ route('page', ['page'=>'detail' . $row -> id]) }}"><h5 class="text-center mt-3 bg-success py-1">{{$row -> name}}</h5></a>
+                            <p class="text-center mb-0">{{number_format($row -> price)}}₫</p>
+                            <p class="text-center mb-0 mt-1 {{($row -> quantity) > 0 ? '' : 'text-muted'}}">{{($row -> quantity) > 0 ? 'Còn Lại: ' . $row->quantity : 'Đã Bán Hết'}}</p>
                         </div>
                     </div>
                 </div>
@@ -100,58 +100,38 @@
                                 <div class="carousel-item active">
                                     <div class="row">
                                         <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_01.png') }}" alt="Brand Logo"></a>
+                                            <a href="#"><img class="img-fluid" src="{{ asset('FE/assets/img/nangtho.jpg') }}" alt="Brand Logo"></a>
                                         </div>
                                         <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_02.png') }}" alt="Brand Logo"></a>
+                                            <a href="#"><img class="img-fluid" src="{{ asset('FE/assets/img/vceo.jpg') }}" alt="Brand Logo"></a>
                                         </div>
                                         <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_03.png') }}" alt="Brand Logo"></a>
+                                            <a href="#"><img class="img-fluid" src="{{ asset('FE/assets/img/moclan.jpg') }}" alt="Brand Logo"></a>
                                         </div>
                                         <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_04.png') }}" alt="Brand Logo"></a>
+                                            <a href="#"><img class="img-fluid" src="{{ asset('FE/assets/img/yenhai.jpg') }}" alt="Brand Logo"></a>
                                         </div>
                                     </div>
                                 </div>
                                 <!--End First slide-->
-
                                 <!--Second slide-->
                                 <div class="carousel-item">
                                     <div class="row">
                                         <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_01.png') }}" alt="Brand Logo"></a>
+                                            <a href="#"><img class="img-fluid" src="{{ asset('FE/assets/img/nangtho.jpg') }}" alt="Brand Logo"></a>
                                         </div>
                                         <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_02.png') }}" alt="Brand Logo"></a>
+                                            <a href="#"><img class="img-fluid" src="{{ asset('FE/assets/img/vceo.jpg') }}" alt="Brand Logo"></a>
                                         </div>
                                         <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_03.png') }}" alt="Brand Logo"></a>
+                                            <a href="#"><img class="img-fluid" src="{{ asset('FE/assets/img/moclan.jpg') }}" alt="Brand Logo"></a>
                                         </div>
                                         <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_04.png') }}" alt="Brand Logo"></a>
+                                            <a href="#"><img class="img-fluid" src="{{ asset('FE/assets/img/yenhai.jpg') }}" alt="Brand Logo"></a>
                                         </div>
                                     </div>
                                 </div>
                                 <!--End Second slide-->
-
-                                <!--Third slide-->
-                                <div class="carousel-item">
-                                    <div class="row">
-                                        <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_01.png') }}" alt="Brand Logo"></a>
-                                        </div>
-                                        <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_02.png') }}" alt="Brand Logo"></a>
-                                        </div>
-                                        <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_03.png') }}" alt="Brand Logo"></a>
-                                        </div>
-                                        <div class="col-3 p-md-5">
-                                            <a href="#"><img class="img-fluid brand-img" src="{{ asset('FE/assets/img/brand_04.png') }}" alt="Brand Logo"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--End Third slide-->
 
                             </div>
                             <!--End Slides-->

@@ -66,6 +66,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Áo dài cách tân 01',
                 'price' =>  '250000',
+                'quantity' =>  '0',
                 'image' => 'sanpham1.jpg',
                 'description' => 'Áo dài cách tân mang lại những nét nổi bật mới.',
                 'protype_id' => '2',
@@ -75,6 +76,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Áo dài truyền thống 01',
                 'price' =>  '219000',
+                'quantity' =>  '25',
                 'image' => 'sanpham2.jpg',
                 'description' => 'Áo dài truyền thống mang đậm tính cổ truyền với màu sắc, họa tiết có phần biến tấu.',
                 'protype_id' => '1',
@@ -84,6 +86,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Áo dài tay bồng C1',
                 'price' =>  '300000',
+                'quantity' =>  '50',
                 'image' => 'sanpham3.jpg',
                 'description' => 'Áo dài tay bồng mang lại cảm giác mới mẻ, nhẹ nhàng.',
                 'protype_id' => '3',
@@ -93,6 +96,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Áo dài cách tân 02',
                 'price' =>  '210000',
+                'quantity' =>  '25',
                 'image' => 'sanpham4.jpg',
                 'description' => 'Áo dài cách tân với những nét nổi bật, sáng tạo mới.',
                 'protype_id' => '2',
@@ -102,6 +106,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Áo dài cách tân 03',
                 'price' =>  '250000',
+                'quantity' =>  '45',
                 'image' => 'sanpham5.jpg',
                 'description' => 'Áo dài cách tân mang lại những nét nổi bật mới, mang phong cách trẻ trung hơn.',
                 'protype_id' => '2',
@@ -111,6 +116,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Áo dài truyền thống 02',
                 'price' =>  '200000',
+                'quantity' =>  '0',
                 'image' => 'sanpham6.jpg',
                 'description' => 'Áo dài truyền thống mang đậm tính cổ truyền với họa tiết thiên nhiên đổi mới.',
                 'protype_id' => '1',
@@ -120,9 +126,10 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Áo dài tay bồng 02',
                 'price' =>  '230000',
+                'quantity' =>  '14',
                 'image' => 'sanpham7.jpg',
                 'description' => 'Áo dài tay bồng mang lại cảm giác mới mẻ, nhẹ nhàng.',
-                'protype_id' => '1',
+                'protype_id' => '3',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

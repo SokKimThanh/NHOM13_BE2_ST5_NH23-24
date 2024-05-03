@@ -1,3 +1,12 @@
 /*
 Custom Css
 */
+.card:hover{
+  box-shadow: 0 0 8px 5px #6c6e6e;
+}
+.btn-success:hover{
+  box-shadow: 0 0 8px 5px #6f7473;
+}
+.bg-name{
+  background-color: #00EEAA;
+}
