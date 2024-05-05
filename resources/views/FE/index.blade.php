@@ -36,19 +36,65 @@
     </div>
     <div class="row">
         <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="{{ route('protype', ['id'=>1]) }}"><img src="{{ asset('FE/assets/img/sanpham2.jpg') }}" class="rounded-circle img-fluid border"></a>
+            
+            <!-- <a href="{{ route('protype', ['id' => 1]) }}"><img src="{{ asset('FE/assets/img/sanpham2.jpg') }}" class="rounded-circle img-fluid border"></a>
             <h5 class="text-center mt-3 mb-3">Truyền Thống</h5>
-            <p class="text-center"><a href="{{ route('protype', ['id'=>1]) }}" class="btn btn-success">Vào Mua Sắm</a></p>
+            <p class="text-center"><button class="btn btn-success" onclick="window.location.href='{{ route('protype', ['id' => 1]) }}'">Vào Mua Sắm</button></p>
+             -->
+             <div class="card-container1">
+        <div class="card1">
+        <div class="img-content1">
+        <a href="{{ route('protype', ['id' => 1]) }}"><img src="{{ asset('FE/assets/img/sanpham2.jpg') }}" class="rounded-circle img-fluid border"></a>
+        </div>
+        <div class="content1">
+          <b class="heading1">Truyền Thống</b>
+          <p>
+          Áo dài truyền thống mang đậm tính cổ truyền với màu sắc, họa tiết có phần biến tấu.
+          </p>
+        </div>
+      </div>
+      <p class="text-center"><button class="btn btn-success" onclick="window.location.href='{{ route('protype', ['id' => 1]) }}'">Vào Mua Sắm</button></p>
+      </div>
         </div>
         <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="{{ route('protype', ['id'=>2]) }}"><img src="{{ asset('FE/assets/img/sanpham1.jpg') }}" class="rounded-circle img-fluid border"></a>
-            <h2 class="h5 text-center mt-3 mb-3">Cách Tân</h2>
-            <p class="text-center"><a href="{{ route('protype', ['id'=>2]) }}" class="btn btn-success">Vào Mua Sắm</a></p>
+            
+            <!-- <a href="{{ route('protype', ['id' => 1]) }}"><img src="{{ asset('FE/assets/img/sanpham2.jpg') }}" class="rounded-circle img-fluid border"></a>
+            <h5 class="text-center mt-3 mb-3">Truyền Thống</h5>
+            <p class="text-center"><button class="btn btn-success" onclick="window.location.href='{{ route('protype', ['id' => 1]) }}'">Vào Mua Sắm</button></p>
+             -->
+             <div class="card-container1">
+        <div class="card1">
+        <div class="img-content1">
+        <a href="{{ route('protype', ['id' => 2]) }}"><img src="{{ asset('FE/assets/img/sanpham1.jpg') }}" class="rounded-circle img-fluid border"></a>
+        </div>
+        <div class="content1">
+          <b class="heading1">Cách Tân</b>
+          <p>
+          Áo dài cách tân mang lại những nét nổi bật mới.          </p>
+        </div>
+      </div>
+      <p class="text-center"><button class="btn btn-success" onclick="window.location.href='{{ route('protype', ['id' => 2]) }}'">Vào Mua Sắm</button></p>
+      </div>
         </div>
         <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="{{ route('protype', ['id'=>3]) }}"><img src="{{ asset('FE/assets/img/sanpham3.jpg') }}" class="rounded-circle img-fluid border"></a>
-            <h2 class="h5 text-center mt-3 mb-3">Tay Bồng</h2>
-            <p class="text-center"><a href="{{ route('protype', ['id'=>3]) }}" class="btn btn-success">Vào Mua Sắm</a></p>
+            
+            <!-- <a href="{{ route('protype', ['id' => 1]) }}"><img src="{{ asset('FE/assets/img/sanpham2.jpg') }}" class="rounded-circle img-fluid border"></a>
+            <h5 class="text-center mt-3 mb-3">Truyền Thống</h5>
+            <p class="text-center"><button class="btn btn-success" onclick="window.location.href='{{ route('protype', ['id' => 1]) }}'">Vào Mua Sắm</button></p>
+             -->
+             <div class="card-container1">
+        <div class="card1">
+        <div class="img-content1">
+        <a href="{{ route('protype', ['id' => 3]) }}"><img src="{{ asset('FE/assets/img/sanpham3.jpg') }}" class="rounded-circle img-fluid border"></a>
+        </div>
+        <div class="content1">
+          <b class="heading1">Tay Bồng</b>
+          <p>
+          Áo dài tay bồng mang lại cảm giác mới mẻ, nhẹ nhàng.        </p>
+        </div>
+      </div>
+      <p class="text-center"><button class="btn btn-success" onclick="window.location.href='{{ route('protype', ['id' => 3]) }}'">Vào Mua Sắm</button></p>
+      </div>
         </div>
     </div>
 </section>
@@ -67,16 +113,16 @@
             @foreach($products as $row)
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
-                    <a href="{{ route('page', ['page'=>'detail' . $row -> id]) }}" class="card">
-                        <img src="{{ asset('FE/assets/img/' . $row -> image) }}" class="card-img-top" alt="...">
+                    <a href="{{ route('page', ['page' => 'detail' . $row->id]) }}" class="card">
+                        <img src="{{ asset('FE/assets/img/' . $row->image) }}" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">
-                            <p class="text-center"><li class="text-muted">{{$row -> price}}</li></p>
+                            <p class="text-center" ><li class="text-muted">{{$row->price }} </li></p>
                         </ul>
-                        <p class="text-center bg-success m-0 pt-1"><a href="{{ route('page', ['page'=>'detail' . $row -> id]) }}" class="h2 text-decoration-none text-white">{{$row -> name}}</a></p>
-                        <p class="text-center mb-0 mt-1 {{($row -> quantity) > 0 ? '' : 'text-muted'}}">{{($row -> quantity) > 0 ? 'Kho Hàng: ' . $row->quantity : 'Đã Bán Hết'}}</p>
-                        <br><p class="text-center"><a href="#" class="btn btn-success">Thêm Vào Giỏ Hàng</a></p>
+                        <p class="text-center bg-success m-0 pt-1"><a href="{{ route('page', ['page' => 'detail' . $row->id]) }}" class="h2 text-decoration-none text-white">{{$row->name}}</a></p>
+                        <p class="text-center mb-0 mt-1 {{($row->quantity) > 0 ? '' : 'text-muted'}}">{{($row->quantity) > 0 ? 'Kho Hàng: ' . $row->quantity : 'Đã Bán Hết'}}</p>
+                        <br><p class="text-center"><button class="btn btn-success" onclick="window.location.href='{{ route('protype', ['id' => 2]) }}'">Thêm Vào Giỏ Hàng</button></p>
                     </div>
                 </div>
             </div>

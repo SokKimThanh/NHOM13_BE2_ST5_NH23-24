@@ -32,8 +32,18 @@ class WelcomeController extends Controller
     public function getPageProtype($id)
     {
         $protypes = Protype::all();
-        $products = Products::where('protype_id','=', $id)->get();
-        $count = ceil(count($products)/6);
+
+
+        if($id == 0){
+
+            $products = Products::all();
+            $count = ceil(count($products)/6);
+        }else
+        {
+            $products = Products::where('protype_id','=', $id)->get();
+            $count = ceil(count($products)/6);
+        }
+        // $count = ceil(count($products)/6);
         return view('FE/shop', ['products' => $products, 'protypes' => $protypes, 'pages' => $count, 'pageShop' => 1]);
     }
     public function getPageBackEnd($page = 'layout')

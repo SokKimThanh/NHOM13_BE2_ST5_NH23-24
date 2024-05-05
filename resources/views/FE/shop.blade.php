@@ -15,6 +15,7 @@
                         <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                     </a>
                     <ul id="collapseThree" class="collapse list-unstyled pl-3">
+                    <li class="ms-3"><a class="text-decoration-none" href="{{ route('protype', ['id' => 0]) }}">Tất Cả Sản Phẩm</a></li>
                         @foreach($protypes as $row)                        
                         <li class="ms-3"><a class="text-decoration-none" href="{{ route('protype', ['id' => $row -> id]) }}">{{$row -> protype_name}}</a></li>
                         @endforeach
