@@ -18,7 +18,7 @@
                         <p class="h3 py-2">{{ number_format($detail->price) }}</p>
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                                <h6>Danh Mục: {{ $detail->name }}</h6>
+                                <h6>Danh Mục: </h6>
                             </li>
                             <li class="list-inline-item">
                                 <p class="text-muted"><strong></strong></p>
@@ -64,23 +64,23 @@
         <!--Start Carousel Wrapper-->
         <div id="carousel-related-product">
             @foreach($productList as $item)
-            <div class="p-2 pb-3">
-                <div class="product-wap card rounded-0">
-                    <a class="card rounded-0"
-                        href="{{ route('frontend.detail', ['id' => $item->id, 'href_param' => $item->slug]) }}">
-                        <img class="card-img rounded-0 img-fluid" src="{{ $item->thumbnail }}">
-                    </a>
-                    <div class="card-body">
-                        <a href="{{ route('frontend.detail', ['id' => $item->id, 'href_param' => $item->slug]) }}"
-                            class="h3 text-decoration-none">
-                            <h4 class="text-center">{{ $item->title }}</h4>
+                <div class="p-2 pb-3">
+                    <div class="product-wap card rounded-0">
+                        <a class="card rounded-0"
+                            href="{{ route('frontend.detail', ['id' => $item->id, 'href_param' => $item->slug]) }}">
+                            <img class="card-img rounded-0 img-fluid" src="{{ $item->thumbnail }}">
                         </a>
-                        <p class="text-center mb-0 mt-1">Mẫu </p>
-                        <p class="text-center mb-0">{{ number_format($item->price, 0) }}
-                            vnđ</p>
+                        <div class="card-body">
+                            <a href="{{ route('frontend.detail', ['id' => $item->id, 'href_param' => $item->slug]) }}"
+                                class="h3 text-decoration-none">
+                                <h4 class="text-center">{{ $item->title }}</h4>
+                            </a>
+                            <p class="text-center mb-0 mt-1">Mẫu </p>
+                            <p class="text-center mb-0">{{ number_format($item->price, 0) }}
+                                vnđ</p>
+                        </div>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
 
@@ -90,52 +90,52 @@
 <!-- End Article -->
 @section('js')
 <script type="text/javascript">
-function addCart(id, num) {
-    cartList = getCookie('cart')
-    if (cartList != null && cartList != '') {
-        cartList = JSON.parse(cartList)
-    } else {
-        cartList = []
-    }
-
-    isFind = false
-    for (var i = 0; i < cartList.length; i++) {
-        if (cartList[i].id == id) {
-            cartList[i].num = parseInt(cartList[i].num) + parseInt(num)
-            isFind = true
-            break
+    function addCart(id, num) {
+        cartList = getCookie('cart')
+        if (cartList != null && cartList != '') {
+            cartList = JSON.parse(cartList)
+        } else {
+            cartList = []
         }
+
+        isFind = false
+        for (var i = 0; i < cartList.length; i++) {
+            if (cartList[i].id == id) {
+                cartList[i].num = parseInt(cartList[i].num) + parseInt(num)
+                isFind = true
+                break
+            }
+        }
+
+        if (!isFind) {
+            cartList.push({
+                'id': id,
+                'num': num
+            })
+        }
+
+        cartList = JSON.stringify(cartList)
+        document.cookie = `cart=${cartList}` + getLifecycle()
+
+        location.reload()
     }
 
-    if (!isFind) {
-        cartList.push({
-            'id': id,
-            'num': num
-        })
+
+    function getLifecycle() {
+        var now = new Date();
+        var time = now.getTime();
+        var expireTime = time + 30 * 1000 * 86400;
+        now.setTime(expireTime);
+        return ';expires=' + now.toUTCString() + ';path=/';
     }
 
-    cartList = JSON.stringify(cartList)
-    document.cookie = `cart=${cartList}` + getLifecycle()
-
-    location.reload()
-}
-
-
-function getLifecycle() {
-    var now = new Date();
-    var time = now.getTime();
-    var expireTime = time + 30 * 1000 * 86400;
-    now.setTime(expireTime);
-    return ';expires=' + now.toUTCString() + ';path=/';
-}
-
-function getCookie(name) {
-    function escape(s) {
-        return s.replace(/([.*+?\^$(){}|\[\]\/\\])/g, '\\$1');
+    function getCookie(name) {
+        function escape(s) {
+            return s.replace(/([.*+?\^$(){}|\[\]\/\\])/g, '\\$1');
+        }
+        var match = document.cookie.match(RegExp('(?:^|;\\s*)' + escape(name) + '=([^;]*)'));
+        return match ? match[1] : null;
     }
-    var match = document.cookie.match(RegExp('(?:^|;\\s*)' + escape(name) + '=([^;]*)'));
-    return match ? match[1] : null;
-}
 </script>
 @endsection
 @stop

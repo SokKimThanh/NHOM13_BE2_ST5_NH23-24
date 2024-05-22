@@ -5,7 +5,7 @@
 <section class="inner_page_head">
    <div class="container_fuild">
       <div class="row">
-         <div class="col-md-12">
+         <div class="col-md-12 offset-md-1">
             <div class="full">
                <h3>Giỏ Hàng</h3>
             </div>
@@ -18,16 +18,32 @@
 <section class="product_section layout_padding">
    <div class="container">
       <div class="row">
-
          <div class="col-md-5">
             <form method="post" action="{{ route('frontend.complete') }}" id="MyForm">
                <fieldset>
                   {{ csrf_field() }}
-                  <input type="text" placeholder="Nhập họ & tên" name="fullname" required />
-                  <input type="email" placeholder="Nhập email" name="email" required />
-                  <input type="tel" placeholder="Nhập số điện thoại" name="phone_number" required />
-                  <input type="text" placeholder="Nhập địa chỉ nhận hàng" name="address" required />
-                  <textarea placeholder="Nội dung" name="note"></textarea>
+                  <div class="form-group">
+                     <label for="exampleInputEmail1">Email</label>
+                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Nhập email" required>
+                     <small id="emailHelp" class="form-text text-muted">Chúng tôi không bao giờ chia sẽ email của bạn
+                        cho bất kỳ ai.</small>
+                  </div>
+                  <div class="form-group">
+                     <label for="exampleInputEmail1">Số Điện thoại</label>
+                     <input type="tel" class="form-control" placeholder="Nhập số điện thoại" name="phone_number"
+                        required />
+                  </div>
+                  <div class="form-group">
+                     <label for="exampleInputEmail1">Địa chỉ</label>
+                     <input type="text" class="form-control" placeholder="Nhập địa chỉ nhận hàng" name="address"
+                        required />
+                  </div>
+                  <div class="form-group">
+                     <label for="exampleInputEmail1">Nội dung</label>
+                     <textarea class="form-control" placeholder="Nội dung" name="note"></textarea>
+                  </div>
+
                   <button id="submitData" hidden>Send</button>
                </fieldset>
             </form>

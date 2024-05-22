@@ -18,4 +18,8 @@ Route::controller(FrontendController::class)
         Route::get('/{id}-{href_param}.phtml', 'showDetail')->name('frontend.detail');
         // http://127.0.0.1:8000/1-gioi-thieu-doanh-nghiep.html => SEO google, bing, yahoo
         Route::get('/{id}-{href_param}.html', 'showPost')->name('frontend.post');
+
+        Route::get('/search/products', 'searchProducts')->name('search.products');
+
+
     });

@@ -84,6 +84,11 @@
                             <p class="text-center"><a
                                     href="{{ route('frontend.detail', ['id' => $item->id, 'href_param' => $item->slug]) }}"
                                     class="h2 text-decoration-none text-dark">{{$item->title}}</a></p>
+                            @if ($item->quanlity > 0)
+                                <p class="text-center">Số lượng: {{ $item->quanlity }}</p>
+                            @else
+                                <p class="text-center">Hết hàng</p>
+                            @endif
                             <br>
                             <p class="text-center">
                                 <button class="btn btn-success btn-lg"

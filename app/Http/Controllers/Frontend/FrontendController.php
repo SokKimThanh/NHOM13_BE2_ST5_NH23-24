@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Models\Orders;
 
 class FrontendController extends Controller
@@ -34,7 +34,7 @@ class FrontendController extends Controller
             ->first();
 
         $product = DB::table('product')
-            ->where('category_id', '=', 1)
+            ->where('category_id', '=', $listCategory->id)
             ->paginate(4);
 
         return view('frontend.category', compact('product'))->with([
@@ -45,8 +45,22 @@ class FrontendController extends Controller
         ]);
     }
 
+    public function searchProducts(Request $request)
+    {
+        $searchTerm = $request->get('search');
 
+        $productList = DB::table('product')
+            ->where('deleted', 0)
+            ->where('title', 'like', "%{$searchTerm}%")
+            ->paginate(8);
 
+        return view('frontend.product')->with([
+            'mainClass' => 'sub_page',
+            'title' => 'Kết quả tìm kiếm',
+            'productList' => $productList,
+            'cartNum' => $this->getCartNum()
+        ]);
+    }
     public function showProducts(Request $request)
     {
         $productList = DB::table('product')
@@ -64,7 +78,6 @@ class FrontendController extends Controller
     public function showDetail(Request $request, $id, $href_param)
     {
         $detail = DB::table('product')
-            ->leftJoin('category', 'category.id', '=', 'product.category_id')
             ->where('deleted', 0)
             ->get();
         if ($detail == null || count($detail) == 0) {
@@ -156,27 +169,41 @@ class FrontendController extends Controller
         if (isset($_COOKIE['cart'])) {
             $cartList = json_decode($_COOKIE['cart']);
         }
-        $idList = [];
-        foreach ($cartList as $item) {
-            $idList[] = $item->id;
+
+        // Kiểm tra nếu $cartList là null hoặc trống
+        if ($cartList == null || count($cartList) == 0) {
+            return redirect()->route('home_index');
         }
 
+        $idList = [];//Kiểm tra thuộc tính id khi tạo danh sách $idList:
+        foreach ($cartList as $item) {
+            // Kiểm tra xem item có thuộc tính id hay không
+            if (isset($item->id)) {
+                $idList[] = $item->id;
+            }
+        }
+
+        // Truy vấn các sản phẩm không bị xóa và có id trong danh sách $idList
         $cartItems = DB::table('product')
             ->where('deleted', 0)
             ->whereIn('id', $idList)
             ->get();
-        for ($i = 0; $i < count($cartItems); $i++) {
-            for ($j = 0; $j < count($cartList); $j++) {
-                if ($cartItems[$i]->id == $cartList[$j]->id) {
-                    $cartItems[$i]->num = $cartList[$j]->num;
+
+        // Kết hợp thông tin số lượng từ $cartList với các mục trong $cartItems
+        foreach ($cartItems as $cartItem) {
+            foreach ($cartList as $item) {
+                // Kiểm tra xem $item có thuộc tính id và num hay không
+                if (isset($item->id) && isset($item->num) && $cartItem->id == $item->id) {
+                    $cartItem->num = $item->num;
                     break;
                 }
             }
         }
 
+        // Trả về view với các biến cần thiết
         return view('frontend.cart')->with([
             'mainClass' => 'sub_page',
-            'title' => 'Giở Hàng',
+            'title' => 'Giỏ Hàng',
             'cartItems' => $cartItems,
             'cartNum' => $this->getCartNum()
         ]);
@@ -271,17 +298,32 @@ class FrontendController extends Controller
         return redirect()->route('home_index');
     }
 
+    //
+    // lấy tổng số lượng các mặt hàng từ cookie 'cart', đảm bảo rằng nếu có mặt hàng nào không có thuộc tính 'num' thì sẽ không gây lỗi, và nếu giỏ hàng rỗng hoặc không tồn tại thì sẽ trả về giá trị 0.
+    //
     private function getCartNum()
     {
+        //Khởi tạo biến $cartList:
         $cartList = [];
+        // Kiểm tra sự tồn tại của cookie 'cart':
         if (isset($_COOKIE['cart'])) {
+
+            //Giải mã JSON từ cookie 'cart':
             $cartList = json_decode($_COOKIE['cart']);
+            // For debugging: inspect the decoded cart list
+            // error_log(print_r($cartList, true));
+            // Khởi tạo biến đếm $num:
             $num = 0;
-            foreach ($cartList as $items) {
-                $num += $items->num;
+            // Duyệt qua các mặt hàng trong $cartList:
+            foreach ($cartList as $item) {
+                if (isset($item->num)) {
+                    $num += $item->num;
+                }
             }
+            // Trả về tổng số lượng các mặt hàng:
             return $num;
         } else {
+            // Xử lý khi cookie 'cart' không tồn tại:
             return 0;
         }
     }

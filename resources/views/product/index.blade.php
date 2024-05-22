@@ -13,6 +13,7 @@ $title = "Quản Lý Sản Phẩm";
             <th class="border-top-0">Tên sản phẩm</th>
             <th class="border-top-0">Ảnh bìa</th>
             <th class="border-top-0">Danh mục</th>
+            <th class="border-top-0">Số lượng</th>
             <th class="border-top-0">Giá</th>
             <th class="border-top-0">Giá giảm</th>
             <th class="border-top-0">Cập nhật lúc</th>
@@ -26,6 +27,7 @@ $title = "Quản Lý Sản Phẩm";
             <td>{{ $item->title }}</td>
             <td><img src="{{ $item->thumbnail }}" style="width: 180px;"></td>
             <td>{{ $item->category_name }}</td>
+            <td>{{ number_format($item->quanlity, 0) }}</td>
             <td>{{ number_format($item->price, 0) }}</td>
             <td>{{ number_format($item->discount, 0) }}</td>
             <td>{{ getTimeFormat($item->updated_at) }}</td>
