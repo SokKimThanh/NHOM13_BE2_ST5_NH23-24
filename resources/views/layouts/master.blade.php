@@ -292,6 +292,8 @@
         ]
     });
     </script>
+  
+    
     <!-- End Slider Script -->
     @yield('js')
 </body>

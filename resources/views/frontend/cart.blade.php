@@ -68,10 +68,11 @@
                         @endforeach
                     </tbody>
 
+
                 </table>
                 <h3 style="float: left; font-size: 22px;">Tổng tiền: {{ number_format($total, 0) }}</h3>
                 <a href="{{ route('frontend.checkout') }}">
-                    <button class="btn btn-success" style="font-size: 20px; float: right;">Thanh
+                    <button class="btn btn-success" style="font-size: 20px; float: right;" >Thanh
                         Toán</button>
                 </a>
             </div>

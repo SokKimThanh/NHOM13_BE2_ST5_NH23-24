@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Illuminate\Support\Facades\Log;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -175,7 +176,7 @@ class FrontendController extends Controller
             return redirect()->route('home_index');
         }
 
-        $idList = [];//Kiểm tra thuộc tính id khi tạo danh sách $idList:
+        $idList = [];
         foreach ($cartList as $item) {
             // Kiểm tra xem item có thuộc tính id hay không
             if (isset($item->id)) {
@@ -209,25 +210,37 @@ class FrontendController extends Controller
         ]);
     }
 
+
+
     public function showCheckout(Request $request)
     {
         $cartList = [];
         if (isset($_COOKIE['cart'])) {
             $cartList = json_decode($_COOKIE['cart']);
         }
+
+        // Debug dữ liệu giỏ hàng
+        Log::info('Cart List:', (array) $cartList);
+
         $idList = [];
         foreach ($cartList as $item) {
-            $idList[] = $item->id;
+            if (isset($item->id)) {
+                $idList[] = $item->id;
+            }
         }
 
         $cartItems = DB::table('product')
             ->where('deleted', 0)
             ->whereIn('id', $idList)
             ->get();
-        for ($i = 0; $i < count($cartItems); $i++) {
-            for ($j = 0; $j < count($cartList); $j++) {
-                if ($cartItems[$i]->id == $cartList[$j]->id) {
-                    $cartItems[$i]->num = $cartList[$j]->num;
+
+        // Debug dữ liệu sản phẩm từ cơ sở dữ liệu
+        Log::info('Cart Items:', $cartItems->toArray());
+
+        foreach ($cartItems as $cartItem) {
+            foreach ($cartList as $item) {
+                if (isset($item->id) && isset($item->num) && $cartItem->id == $item->id) {
+                    $cartItem->num = $item->num;
                     break;
                 }
             }
@@ -241,36 +254,54 @@ class FrontendController extends Controller
         ]);
     }
 
+
+
+
     public function completeCheckout(Request $request)
     {
         $cartList = [];
         if (isset($_COOKIE['cart'])) {
             $cartList = json_decode($_COOKIE['cart']);
         }
+
+        // Kiểm tra nếu $cartList là null hoặc trống
         if ($cartList == null || count($cartList) == 0) {
             return redirect()->route('home_index');
         }
 
         $idList = [];
         foreach ($cartList as $item) {
-            $idList[] = $item->id;
+            if (isset($item->id)) {
+                $idList[] = $item->id;
+            }
         }
 
+        // Truy vấn các sản phẩm không bị xóa và có id trong danh sách $idList
         $cartItems = DB::table('product')
             ->where('deleted', 0)
             ->whereIn('id', $idList)
             ->get();
+
         $totalMoney = 0;
-        for ($i = 0; $i < count($cartItems); $i++) {
-            for ($j = 0; $j < count($cartList); $j++) {
-                if ($cartItems[$i]->id == $cartList[$j]->id) {
-                    $cartItems[$i]->num = $cartList[$j]->num;
-                    $totalMoney += $cartItems[$i]->num * $cartItems[$i]->discount;
+        foreach ($cartItems as $cartItem) {
+            foreach ($cartList as $item) {
+                if (isset($item->id) && isset($item->num) && $cartItem->id == $item->id) {
+                    $cartItem->num = $item->num;
+                    $totalMoney += $cartItem->num * $cartItem->discount;
                     break;
                 }
             }
         }
 
+        // Kiểm tra các trường bắt buộc trong yêu cầu
+        $request->validate([
+            'fullname' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone_number' => 'required|string|max:20',
+            'address' => 'required|string|max:255',
+        ]);
+
+        // Tạo đơn hàng mới
         $orderItem = Orders::create([
             'user_id' => null,
             'fullname' => $request->fullname,
@@ -279,24 +310,30 @@ class FrontendController extends Controller
             'address' => $request->address,
             'note' => $request->note,
             'status' => 0,
-            'order_date' => date('Y-m-d H:i:s'),
+            'order_date' => now(),
             'total_money' => $totalMoney
         ]);
 
+        // Chèn chi tiết đơn hàng vào bảng order_details
         foreach ($cartItems as $item) {
-            DB::table('order_details')->insert([
-                'order_id' => $orderItem->id,
-                'product_id' => $item->id,
-                'price' => $item->discount,
-                'num' => $item->num,
-                'total_money' => $item->discount * $item->num
-            ]);
+            if (isset($item->num)) {
+                DB::table('order_details')->insert([
+                    'order_id' => $orderItem->id,
+                    'product_id' => $item->id,
+                    'price' => $item->discount,
+                    'num' => $item->num,
+                    'total_money' => $item->discount * $item->num
+                ]);
+            }
         }
 
+        // Xóa cookie giỏ hàng
         setcookie("cart", '', time(), '/');
 
         return redirect()->route('home_index');
     }
+
+
 
     //
     // lấy tổng số lượng các mặt hàng từ cookie 'cart', đảm bảo rằng nếu có mặt hàng nào không có thuộc tính 'num' thì sẽ không gây lỗi, và nếu giỏ hàng rỗng hoặc không tồn tại thì sẽ trả về giá trị 0.

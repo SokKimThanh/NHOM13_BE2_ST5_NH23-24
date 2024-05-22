@@ -64,22 +64,19 @@
             @endphp
                   @foreach($cartItems as $item)
                            @php
-                     $total += $item->discount * $item->num;
+                     // Kiểm tra xem thuộc tính 'num' có tồn tại hay không
+                     $num = isset($item->num) ? $item->num : 1;
+                     $total += $item->discount * $num;
                   @endphp
                            <tr>
                               <td>{{ $item->title }}</td>
-                              <td>
-                                 {{ number_format($item->discount, 0) }}
-                              </td>
-                              <td>
-                                 {{ $item->num }}
-                              </td>
-                              <td>
-                                 {{ number_format($item->discount * $item->num, 0) }}
-                              </td>
+                              <td>{{ number_format($item->discount, 0) }}</td>
+                              <td>{{ $num }}</td>
+                              <td>{{ number_format($item->discount * $num, 0) }}</td>
                            </tr>
             @endforeach
                </tbody>
+
             </table>
             <div class="row">
                <div class="col-md-12">
@@ -89,7 +86,11 @@
                   <button class="btn btn-success" style="font-size: 32px; width: 260px; float: right;"
                      onclick="$('#submitData').click()">Hoàn Thành</button>
                </div>
+               <a href="{{ route('home_index') }}">
+                    <button class="btn btn-success" style="font-size: 20px; float: right;" >Hoàn Thành</button>
+                </a>
             </div>
+            
          </div>
       </div>
    </div>
