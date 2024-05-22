@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Product\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -10,24 +9,25 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('layout/layout');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home_index');
 
+Auth::routes();
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-require __DIR__ . '/auth.php';
+Auth::routes();
 
-Route::get('/{page?}', [WelcomeController::class, 'getPageFrontEnd'])->name('page');
-Route::get('/shop/{id}', [WelcomeController::class, 'getPageProtype'])->name('protype');
-Route::get('/manage/{page?}', [WelcomeController::class, 'getPageBackEnd'])->name('manage');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::post('/api/upload', [App\Http\Controllers\Api\ApiController::class, 'uploadFile'])->name('api.uploadfile');

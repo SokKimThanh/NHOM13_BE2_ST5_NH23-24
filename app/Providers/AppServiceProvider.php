@@ -2,10 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
-
-use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +25,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Schema::defaultStringLength(191);
+        Paginator::useBootstrap();
+        // view()->composer('*', function ($view) {
+        //     $view->with([
+        //         'category' => Category::orderBy('name', 'ASC')->get(),
+        //     ]);
+        // });
     }
 }
