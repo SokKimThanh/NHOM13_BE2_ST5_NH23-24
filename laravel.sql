@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: May 22, 2024 at 11:57 AM
--- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th5 22, 2024 lúc 11:50 PM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,23 +18,23 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `laravel`
+-- Cơ sở dữ liệu: `laravel`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Cấu trúc bảng cho bảng `category`
 --
 
 CREATE TABLE `category` (
-  `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `href_param` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `href_param` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `category`
+-- Đang đổ dữ liệu cho bảng `category`
 --
 
 INSERT INTO `category` (`id`, `name`, `href_param`) VALUES
@@ -46,39 +46,39 @@ INSERT INTO `category` (`id`, `name`, `href_param`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `failed_jobs`
+-- Cấu trúc bảng cho bảng `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
-  `id` bigint UNSIGNED NOT NULL,
-  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `feedback`
+-- Cấu trúc bảng cho bảng `feedback`
 --
 
 CREATE TABLE `feedback` (
-  `id` bigint UNSIGNED NOT NULL,
-  `email` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone_number` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `subject_name` varchar(350) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `note` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` tinyint NOT NULL DEFAULT '0',
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `phone_number` varchar(20) NOT NULL,
+  `subject_name` varchar(350) NOT NULL,
+  `note` varchar(1000) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `fullname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `fullname` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `feedback`
+-- Đang đổ dữ liệu cho bảng `feedback`
 --
 
 INSERT INTO `feedback` (`id`, `email`, `phone_number`, `subject_name`, `note`, `status`, `created_at`, `updated_at`, `fullname`) VALUES
@@ -88,29 +88,29 @@ INSERT INTO `feedback` (`id`, `email`, `phone_number`, `subject_name`, `note`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gallery`
+-- Cấu trúc bảng cho bảng `gallery`
 --
 
 CREATE TABLE `gallery` (
-  `id` bigint UNSIGNED NOT NULL,
-  `product_id` bigint UNSIGNED NOT NULL,
-  `thumbnail` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `thumbnail` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Cấu trúc bảng cho bảng `migrations`
 --
 
 CREATE TABLE `migrations` (
-  `id` int UNSIGNED NOT NULL,
-  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int NOT NULL
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Đang đổ dữ liệu cho bảng `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -131,22 +131,22 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news`
+-- Cấu trúc bảng cho bảng `news`
 --
 
 CREATE TABLE `news` (
-  `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `href_param` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `thumbnail` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `href_param` varchar(250) NOT NULL,
+  `thumbnail` varchar(500) NOT NULL,
+  `content` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted` tinyint(1) DEFAULT '0'
+  `deleted` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `news`
+-- Đang đổ dữ liệu cho bảng `news`
 --
 
 INSERT INTO `news` (`id`, `title`, `href_param`, `thumbnail`, `content`, `created_at`, `updated_at`, `deleted`) VALUES
@@ -167,24 +167,24 @@ INSERT INTO `news` (`id`, `title`, `href_param`, `thumbnail`, `content`, `create
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Cấu trúc bảng cho bảng `orders`
 --
 
 CREATE TABLE `orders` (
-  `id` bigint UNSIGNED NOT NULL,
-  `user_id` bigint UNSIGNED DEFAULT NULL,
-  `fullname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone_number` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `note` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `fullname` varchar(50) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `phone_number` varchar(20) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `note` varchar(1000) DEFAULT NULL,
   `order_date` datetime NOT NULL,
-  `status` tinyint NOT NULL DEFAULT '0',
-  `total_money` int NOT NULL
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `total_money` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `orders`
+-- Đang đổ dữ liệu cho bảng `orders`
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `fullname`, `email`, `phone_number`, `address`, `note`, `order_date`, `status`, `total_money`) VALUES
@@ -199,20 +199,20 @@ INSERT INTO `orders` (`id`, `user_id`, `fullname`, `email`, `phone_number`, `add
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_details`
+-- Cấu trúc bảng cho bảng `order_details`
 --
 
 CREATE TABLE `order_details` (
-  `id` bigint UNSIGNED NOT NULL,
-  `order_id` bigint UNSIGNED NOT NULL,
-  `product_id` bigint UNSIGNED NOT NULL,
-  `price` int NOT NULL,
-  `num` int NOT NULL,
-  `total_money` int NOT NULL
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `price` int(11) NOT NULL,
+  `num` int(11) NOT NULL,
+  `total_money` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `order_details`
+-- Đang đổ dữ liệu cho bảng `order_details`
 --
 
 INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `price`, `num`, `total_money`) VALUES
@@ -230,28 +230,28 @@ INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `price`, `num`, `to
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Cấu trúc bảng cho bảng `password_resets`
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `personal_access_tokens`
+-- Cấu trúc bảng cho bảng `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
-  `id` bigint UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tokenable_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -260,56 +260,56 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Cấu trúc bảng cho bảng `product`
 --
 
 CREATE TABLE `product` (
-  `id` bigint UNSIGNED NOT NULL,
-  `category_id` bigint UNSIGNED NOT NULL,
-  `title` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `qunality` int NOT NULL,
-  `price` int NOT NULL,
-  `discount` int NOT NULL,
-  `thumbnail` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `quanlity` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `discount` int(11) NOT NULL,
+  `thumbnail` varchar(500) NOT NULL,
+  `description` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted` tinyint NOT NULL DEFAULT '0',
-  `slug` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `deleted` tinyint(4) NOT NULL DEFAULT 0,
+  `slug` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `product`
+-- Đang đổ dữ liệu cho bảng `product`
 --
 
-INSERT INTO `product` (`id`, `category_id`, `title`, `price`, `discount`, `thumbnail`, `description`, `created_at`, `updated_at`, `deleted`, `slug`) VALUES
-(1, 4, 'Áo dài cách tân 01', 200000, 120000, 'https://bizweb.dktcdn.net/100/438/408/files/y-nghia-cua-ao-dai-yodyvn-8daf11ae-a905-41fa-83a0-e48d465eb236.jpg?v=1691046238905', '<p>Áo dài cách tân mang lại nét mới mẻ, trẻ trung</p>', '2022-09-09 00:50:01', '2024-05-08 10:28:31', 0, 'quan-ao-tre-em-trend-2022'),
-(2, 1, 'Áo dài cách tân 02', 6000000, 2000000, 'http://localhost/uploads/sanpham2.jpg', '<p>San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2</p>\r\n\r\n<h1>fsrfwerwerwerwer</h1>\r\n\r\n<h1>pham 2San pham 2</h1>\r\n\r\n<p><img alt=\"\" src=\"https://gokisoft.com/uploads/stores/49/2021/10/bai-tap-ejb.jpg\" style=\"height:400px; width:764px\" /></p>\r\n\r\n<p>&nbsp;</p>', '2022-09-09 01:12:05', '2024-05-08 10:24:54', 0, 'san-pham-2'),
-(3, 2, 'Áo dài tay bồng C01', 234234234, 234234234, 'http://localhost/uploads/sanpham1.jpg', '<p>54sxsg</p>', '2022-09-09 01:15:10', '2024-05-15 03:30:59', 1, '234234234'),
-(4, 1, 'San Pham 1', 200000, 120000, 'https://thanhnien.mediacdn.vn/uploaded/thanhthuy/2019_11_22/mnmoi_SAFT.jpg?width=500', '<p>San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1</p>', '2022-09-09 00:50:01', '2024-05-08 10:28:53', 1, 'san-pham-1'),
-(5, 1, 'Sản Phẩm 3', 6000000, 2000000, 'http://localhost/uploads/sanpham1.jpg', '<p>San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2</p>\r\n\r\n<h1>fsrfwerwerwerwer</h1>\r\n\r\n<h1>pham 2San pham 2</h1>\r\n\r\n<p><img alt=\"\" src=\"https://gokisoft.com/uploads/stores/49/2021/10/bai-tap-ejb.jpg\" style=\"height:400px; width:764px\" /></p>\r\n\r\n<p>&nbsp;</p>', '2022-09-09 01:12:05', '2024-05-08 10:25:31', 0, 'san-pham-2'),
-(6, 2, '234234234', 234234234, 234234234, 'http://localhost/uploads/sanpham2.jpg', '<p>3423423432</p>', '2022-09-09 01:15:10', '2024-05-08 10:27:05', 0, '234234234'),
-(7, 1, 'Sản Phẩm 1', 200000, 120000, 'http://localhost/uploads/sanpham1.jpg', '<p>San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1</p>', '2022-09-09 00:50:01', '2024-05-08 10:23:52', 0, 'san-pham-1'),
-(8, 1, 'San pham 2 Xin chao', 6000000, 2000000, 'http://localhost/uploads/sanpham1.jpg', '<p>San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2</p>\r\n\r\n<h1>fsrfwerwerwerwer</h1>\r\n\r\n<h1>pham 2San pham 2</h1>\r\n\r\n<p><img alt=\"\" src=\"https://gokisoft.com/uploads/stores/49/2021/10/bai-tap-ejb.jpg\" style=\"height:400px; width:764px\" /></p>\r\n\r\n<p>&nbsp;</p>', '2022-09-09 01:12:05', '2024-05-08 10:26:54', 0, 'san-pham-2'),
-(9, 2, '234234234', 234234234, 234234234, 'https://aodaitailoc.com/wp-content/uploads/2023/08/Ao-dai-Viet-Nam-la-gi.png', '<p>3423423432</p>', '2022-09-09 01:15:10', '2024-05-08 10:27:41', 0, '234234234'),
-(10, 1, 'San Pham 1', 200000, 120000, 'https://toquoc.mediacdn.vn/280518851207290880/2023/1/19/batch86a4648-1674117011358565974788-1674117999883-1674118000394608225756.jpg', '<p>San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1</p>', '2022-09-09 00:50:01', '2024-05-08 10:29:17', 1, 'san-pham-1'),
-(11, 1, 'San pham 2 Xin chao', 6000000, 2000000, 'http://localhost/uploads/sanpham1.jpg', '<p>San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2</p>\r\n\r\n<h1>fsrfwerwerwerwer</h1>\r\n\r\n<h1>pham 2San pham 2</h1>\r\n\r\n<p><img alt=\"\" src=\"https://gokisoft.com/uploads/stores/49/2021/10/bai-tap-ejb.jpg\" style=\"height:400px; width:764px\" /></p>\r\n\r\n<p>&nbsp;</p>', '2022-09-09 01:12:05', '2024-05-08 10:27:18', 0, 'san-pham-2'),
-(12, 2, '234234234', 234234234, 234234234, 'https://bizweb.dktcdn.net/100/415/253/files/244304437-597291878141733-8776109538056983475-n.jpg?v=1633262594768', '<p>3423423432</p>', '2022-09-09 01:15:10', '2024-05-08 10:28:09', 0, '234234234'),
-(13, 2, 'áhhsdsbhbs', 55, 44, 'http://localhost/uploads/Screenshot 2023-10-30 221628.png', '<p>cdmnjd</p>', '2024-05-15 04:18:35', '2024-05-15 04:18:35', 1, 'ahhsdsbhbs');
+INSERT INTO `product` (`id`, `category_id`, `title`, `quanlity`, `price`, `discount`, `thumbnail`, `description`, `created_at`, `updated_at`, `deleted`, `slug`) VALUES
+(1, 4, 'Áo dài cách tân 01', 0, 200000, 120000, 'https://bizweb.dktcdn.net/100/438/408/files/y-nghia-cua-ao-dai-yodyvn-8daf11ae-a905-41fa-83a0-e48d465eb236.jpg?v=1691046238905', '<p>Áo dài cách tân mang lại nét mới mẻ, trẻ trung</p>', '2022-09-09 00:50:01', '2024-05-08 10:28:31', 0, 'quan-ao-tre-em-trend-2022'),
+(2, 1, 'Áo dài cách tân 02', 0, 6000000, 2000000, 'https://pos.nvncdn.com/8d4112-8686/ps/20221219_QpLP0ZT1xh0nnCTZANnjpM5F.jpg', '<p>San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2</p>\r\n\r\n<h1>fsrfwerwerwerwer</h1>\r\n\r\n<h1>pham 2San pham 2</h1>\r\n\r\n<p><img alt=\"\" src=\"https://gokisoft.com/uploads/stores/49/2021/10/bai-tap-ejb.jpg\" style=\"height:400px; width:764px\" /></p>\r\n\r\n<p>&nbsp;</p>', '2022-09-09 01:12:05', '2024-05-08 10:24:54', 0, 'san-pham-2'),
+(3, 2, 'Áo dài tay bồng C01', 0, 234234234, 234234234, 'https://bizweb.dktcdn.net/100/236/196/products/c422918ea7d36e8d37c278.jpg?v=1633163873370', '<p>54sxsg</p>', '2022-09-09 01:15:10', '2024-05-15 03:30:59', 1, '234234234'),
+(4, 1, 'San Pham 1', 0, 200000, 120000, 'https://thanhnien.mediacdn.vn/uploaded/thanhthuy/2019_11_22/mnmoi_SAFT.jpg?width=500', '<p>San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1</p>', '2022-09-09 00:50:01', '2024-05-08 10:28:53', 1, 'san-pham-1'),
+(5, 1, 'Sản Phẩm 3', 0, 6000000, 2000000, 'https://product.hstatic.net/1000178779/product/o61a24q012_40776296_3_759702f181f74383beca67db104ed5b9.jpg', '<p>San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2</p>\r\n\r\n<h1>fsrfwerwerwerwer</h1>\r\n\r\n<h1>pham 2San pham 2</h1>\r\n\r\n<p><img alt=\"\" src=\"https://gokisoft.com/uploads/stores/49/2021/10/bai-tap-ejb.jpg\" style=\"height:400px; width:764px\" /></p>\r\n\r\n<p>&nbsp;</p>', '2022-09-09 01:12:05', '2024-05-08 10:25:31', 0, 'san-pham-2'),
+(6, 2, '234234234', 0, 234234234, 234234234, 'https://product.hstatic.net/200000774833/product/c9a14400-349e-4a1f-93f7-71bff5d0394e_aeb780d825ed426b85e1f6da88f3ce5b_master.jpeg', '<p>3423423432</p>', '2022-09-09 01:15:10', '2024-05-08 10:27:05', 0, '234234234'),
+(7, 1, 'Sản Phẩm 1', 0, 200000, 120000, 'https://images2.thanhnien.vn/528068263637045248/2023/9/6/anh-2-1693989439156227139017.jpg', '<p>San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1</p>', '2022-09-09 00:50:01', '2024-05-08 10:23:52', 0, 'san-pham-1'),
+(8, 1, 'San pham 2 Xin chao', 0, 6000000, 2000000, 'https://pos.nvncdn.com/4ef0bf-108661/pc/20211012_mCvQLjsDftlbTu7uMtnbhIUD.jpg', '<p>San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2</p>\r\n\r\n<h1>fsrfwerwerwerwer</h1>\r\n\r\n<h1>pham 2San pham 2</h1>\r\n\r\n<p><img alt=\"\" src=\"https://gokisoft.com/uploads/stores/49/2021/10/bai-tap-ejb.jpg\" style=\"height:400px; width:764px\" /></p>\r\n\r\n<p>&nbsp;</p>', '2022-09-09 01:12:05', '2024-05-08 10:26:54', 0, 'san-pham-2'),
+(9, 2, '234234234', 0, 234234234, 234234234, 'https://aodaitailoc.com/wp-content/uploads/2023/08/Ao-dai-Viet-Nam-la-gi.png', '<p>3423423432</p>', '2022-09-09 01:15:10', '2024-05-08 10:27:41', 0, '234234234'),
+(10, 1, 'San Pham 1', 0, 200000, 120000, 'https://toquoc.mediacdn.vn/280518851207290880/2023/1/19/batch86a4648-1674117011358565974788-1674117999883-1674118000394608225756.jpg', '<p>San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1San Pham 1</p>', '2022-09-09 00:50:01', '2024-05-08 10:29:17', 1, 'san-pham-1'),
+(11, 1, 'San pham 2 Xin chao', 0, 6000000, 2000000, 'https://iqueenfashion.vn/uploads/98/kem_2181.jpg', '<p>San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2San pham 2</p>\r\n\r\n<h1>fsrfwerwerwerwer</h1>\r\n\r\n<h1>pham 2San pham 2</h1>\r\n\r\n<p><img alt=\"\" src=\"https://gokisoft.com/uploads/stores/49/2021/10/bai-tap-ejb.jpg\" style=\"height:400px; width:764px\" /></p>\r\n\r\n<p>&nbsp;</p>', '2022-09-09 01:12:05', '2024-05-08 10:27:18', 0, 'san-pham-2'),
+(12, 2, '234234234', 0, 234234234, 234234234, 'https://bizweb.dktcdn.net/100/415/253/files/244304437-597291878141733-8776109538056983475-n.jpg?v=1633262594768', '<p>3423423432</p>', '2022-09-09 01:15:10', '2024-05-08 10:28:09', 0, '234234234'),
+(13, 2, 'áhhsdsbhbs', 0, 55, 44, 'http://localhost/uploads/Screenshot 2023-10-30 221628.png', '<p>cdmnjd</p>', '2024-05-15 04:18:35', '2024-05-15 04:18:35', 1, 'ahhsdsbhbs');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- Cấu trúc bảng cho bảng `role`
 --
 
 CREATE TABLE `role` (
-  `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `role`
+-- Đang đổ dữ liệu cho bảng `role`
 --
 
 INSERT INTO `role` (`id`, `name`) VALUES
@@ -319,26 +319,26 @@ INSERT INTO `role` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
-  `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `phone_number` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `deleted` tinyint NOT NULL DEFAULT '0',
-  `role_id` bigint UNSIGNED NOT NULL DEFAULT '2'
+  `phone_number` varchar(20) DEFAULT NULL,
+  `address` varchar(200) DEFAULT NULL,
+  `deleted` tinyint(4) NOT NULL DEFAULT 0,
+  `role_id` bigint(20) UNSIGNED NOT NULL DEFAULT 2
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `phone_number`, `address`, `deleted`, `role_id`) VALUES
@@ -349,56 +349,56 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (5, 'Lê Văn Đức', 'ducboyfa@gmail.com', NULL, '$2y$10$/gIUgzMp0eF6Tp8TO0kgvemKDK/eQpZl6j5G6cnDxdCDxEBTJM/Kq', 'yBKgExS3g6J95fdN6FvVs9VLC3cFHieQJj4f5I5Og30gtF8v8NF6Us5Y1Xgg', '2024-05-08 04:10:35', '2024-05-08 04:10:35', NULL, NULL, 0, 1);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `category`
+-- Chỉ mục cho bảng `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `failed_jobs`
+-- Chỉ mục cho bảng `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indexes for table `feedback`
+-- Chỉ mục cho bảng `feedback`
 --
 ALTER TABLE `feedback`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `gallery`
+-- Chỉ mục cho bảng `gallery`
 --
 ALTER TABLE `gallery`
   ADD PRIMARY KEY (`id`),
   ADD KEY `gallery_product_id_foreign` (`product_id`);
 
 --
--- Indexes for table `migrations`
+-- Chỉ mục cho bảng `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `news`
+-- Chỉ mục cho bảng `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orders`
+-- Chỉ mục cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `orders_user_id_foreign` (`user_id`);
 
 --
--- Indexes for table `order_details`
+-- Chỉ mục cho bảng `order_details`
 --
 ALTER TABLE `order_details`
   ADD PRIMARY KEY (`id`),
@@ -406,13 +406,13 @@ ALTER TABLE `order_details`
   ADD KEY `order_details_product_id_foreign` (`product_id`);
 
 --
--- Indexes for table `password_resets`
+-- Chỉ mục cho bảng `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indexes for table `personal_access_tokens`
+-- Chỉ mục cho bảng `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -420,20 +420,20 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indexes for table `product`
+-- Chỉ mục cho bảng `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_category_id_foreign` (`category_id`);
 
 --
--- Indexes for table `role`
+-- Chỉ mục cho bảng `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -441,112 +441,112 @@ ALTER TABLE `users`
   ADD KEY `users_role_id_foreign` (`role_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT cho bảng `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `failed_jobs`
+-- AUTO_INCREMENT cho bảng `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `feedback`
+-- AUTO_INCREMENT cho bảng `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `gallery`
+-- AUTO_INCREMENT cho bảng `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `news`
+-- AUTO_INCREMENT cho bảng `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `order_details`
+-- AUTO_INCREMENT cho bảng `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `personal_access_tokens`
+-- AUTO_INCREMENT cho bảng `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `role`
+-- AUTO_INCREMENT cho bảng `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `gallery`
+-- Các ràng buộc cho bảng `gallery`
 --
 ALTER TABLE `gallery`
   ADD CONSTRAINT `gallery_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
 
 --
--- Constraints for table `orders`
+-- Các ràng buộc cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `order_details`
+-- Các ràng buộc cho bảng `order_details`
 --
 ALTER TABLE `order_details`
   ADD CONSTRAINT `order_details_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
   ADD CONSTRAINT `order_details_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
 
 --
--- Constraints for table `product`
+-- Các ràng buộc cho bảng `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
 
 --
--- Constraints for table `users`
+-- Các ràng buộc cho bảng `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`);
