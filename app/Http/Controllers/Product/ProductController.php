@@ -63,6 +63,7 @@ class ProductController extends Controller
         $title = $request->title;
         $description = $request->description;
         $thumbnail = $request->thumbnail;
+        $quanlity = $request->quanlity;
         $price = $request->price;
         $discount = $request->discount;
         $category_id = $request->category_id;
@@ -73,6 +74,7 @@ class ProductController extends Controller
                 'title' => $title,
                 'description' => $description,
                 'thumbnail' => $thumbnail,
+                'quanlity' => $quanlity,
                 'price' => $price,
                 'discount' => $discount,
                 'category_id' => $category_id,
@@ -89,6 +91,7 @@ class ProductController extends Controller
                 'title' => $title,
                 'description' => $description,
                 'thumbnail' => $thumbnail,
+                'quanlity' => $quanlity,
                 'price' => $price,
                 'discount' => $discount,
                 'slug' => $slug,

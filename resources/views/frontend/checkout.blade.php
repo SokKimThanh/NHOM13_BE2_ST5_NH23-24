@@ -5,7 +5,7 @@
 <section class="inner_page_head">
    <div class="container_fuild">
       <div class="row">
-         <div class="col-md-12">
+         <div class="col-md-12 offset-md-1">
             <div class="full">
                <h3>Giỏ Hàng</h3>
             </div>
@@ -23,11 +23,11 @@
             <form method="post" action="{{ route('frontend.complete') }}" id="MyForm">
                <fieldset>
                   {{ csrf_field() }}
-                  <input type="text" placeholder="Nhập họ & tên" name="fullname" required />
-                  <input type="email" placeholder="Nhập email" name="email" required />
-                  <input type="tel" placeholder="Nhập số điện thoại" name="phone_number" required />
-                  <input type="text" placeholder="Nhập địa chỉ nhận hàng" name="address" required />
-                  <textarea placeholder="Nội dung" name="note"></textarea>
+                  <input class="form-control" type="text" placeholder="Nhập họ & tên" name="fullname" required />
+                  <input class="form-control" type="email" placeholder="Nhập email" name="email" required />
+                  <input class="form-control" type="tel" placeholder="Nhập số điện thoại" name="phone_number" required />
+                  <input class="form-control" type="text" placeholder="Nhập địa chỉ nhận hàng" name="address" required />
+                  <textarea class="form-control" placeholder="Nội dung" name="note"></textarea>
                   <button id="submitData" hidden>Send</button>
                </fieldset>
             </form>

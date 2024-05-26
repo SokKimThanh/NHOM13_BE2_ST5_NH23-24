@@ -54,6 +54,11 @@ $title = "Thêm/Sửa Sản Phẩm";
                     id="thumbnail_img">
             </div>
             <div class="form-group">
+                <label>Số lượng: </label>
+                <input required type="number" name="quanlity" class="form-control"
+                    value="{{ ($product != null) ? $product->quanlity : '' }}">
+            </div>
+            <div class="form-group">
                 <label>Giá: </label>
                 <input required type="number" name="price" class="form-control"
                     value="{{ ($product != null) ? $product->price : '' }}">

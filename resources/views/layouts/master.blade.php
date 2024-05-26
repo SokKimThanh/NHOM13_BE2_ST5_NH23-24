@@ -107,11 +107,11 @@
                     <a class="nav-icon position-relative text-decoration-none" href="{{ route('frontend.cart') }}">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         @if($cartNum > 0)
-                            <span
-                                class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">{{ $cartNum }}</span>
+                        <span
+                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">{{ $cartNum }}</span>
                         @else
-                            <span
-                                class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">0</span>
+                        <span
+                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">0</span>
                         @endif
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="/login">
@@ -131,9 +131,10 @@
             <div class="w-100 pt-1 mb-5 text-right">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+            <form action="{{ route('search.products') }}" method="GET" class="modal-content modal-body border-0 p-0">
                 <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <input type="text" class="form-control" id="inputModalSearch" name="search"
+                        placeholder="Nhập từ khóa tìm kiếm ...">
                     <button type="submit" class="input-group-text bg-success text-light">
                         <i class="fa fa-fw fa-search text-white"></i>
                     </button>
@@ -225,6 +226,12 @@
                         <div class="input-group-text btn-success text-light">Subscribe</div>
                     </div>
                 </div>
+                <div class="col-auto">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.4749098516213!2d106.75548917451812!3d10.851437757806705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752797e321f8e9%3A0xb3ff69197b10ec4f!2zVHLGsOG7nW5nIGNhbyDEkeG6s25nIEPDtG5nIG5naOG7hyBUaOG7pyDEkOG7qWM!5e0!3m2!1svi!2s!4v1716384978552!5m2!1svi!2s"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
         </div>
 
@@ -255,13 +262,13 @@
     <!-- Start Slider Script -->
     <script src="{{ asset('FE/assets/js/slick.min.js') }}"></script>
     <script>
-        $('#carousel-related-product').slick({
-            infinite: true,
-            arrows: false,
-            slidesToShow: 4,
-            slidesToScroll: 3,
-            dots: true,
-            responsive: [{
+    $('#carousel-related-product').slick({
+        infinite: true,
+        arrows: false,
+        slidesToShow: 4,
+        slidesToScroll: 3,
+        dots: true,
+        responsive: [{
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 3,
@@ -282,8 +289,8 @@
                     slidesToScroll: 3
                 }
             }
-            ]
-        });
+        ]
+    });
     </script>
     <!-- End Slider Script -->
     @yield('js')

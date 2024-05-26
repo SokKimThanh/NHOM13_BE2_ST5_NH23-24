@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 15, 2024 at 03:01 PM
+-- Generation Time: May 22, 2024 at 11:57 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -267,6 +267,7 @@ CREATE TABLE `product` (
   `id` bigint UNSIGNED NOT NULL,
   `category_id` bigint UNSIGNED NOT NULL,
   `title` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `qunality` int NOT NULL,
   `price` int NOT NULL,
   `discount` int NOT NULL,
   `thumbnail` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
