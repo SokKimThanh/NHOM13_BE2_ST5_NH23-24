@@ -1,8 +1,8 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Product\ProductController;
-
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,20 +14,13 @@ use App\Http\Controllers\Product\ProductController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// })->name('home_index');
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Dinh nghia route cho login
+Route::get('/home', [HomeController::class, 'index'])->name('home');// quay ve trang login
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Định nghĩa route cho trang chủ
+Route::get('/', [HomeController::class, 'index'])->name('home_index');
 
 Route::post('/api/upload', [App\Http\Controllers\Api\ApiController::class, 'uploadFile'])->name('api.uploadfile');
+ 

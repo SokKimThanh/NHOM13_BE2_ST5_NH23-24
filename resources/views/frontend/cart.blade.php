@@ -35,37 +35,44 @@
                     </thead>
                     <tbody>
                         @php
-                        $total = 0;
+                            $total = 0;
                         @endphp
                         @foreach($cartItems as $item)
-                        @php
-                        $total += $item->discount * $item->num;
-                        @endphp
-                        <tr>
-                            <td>{{ $item->title }}</td>
-                            <td>
-                                <img src="{{ $item->thumbnail }}" style="width: 160px">
-                            </td>
-                            <td>
-                                {{ number_format($item->discount, 0) }}
-                            </td>
-                            <td>
-                                <input type="number" name="num" value="{{ $item->num }}" class="form-control"
-                                    style="width: 80px" onchange="updateCart({{ $item->id }}, $(this).val())">
-                            </td>
-                            <td>
-                                {{ number_format($item->discount * $item->num, 0) }}
-                            </td>
-                            <td>
-                                <button class="btn btn-danger" onclick="updateCart({{ $item->id }}, 0)">Xóa</button>
-                            </td>
-                        </tr>
+                                                @php
+                                                    // Kiểm tra xem thuộc tính 'num' có tồn tại hay không
+                                                    if (isset($item->num)) {
+                                                        $total += $item->discount * $item->num;
+                                                    } else {
+                                                        $item->num = 1; // Giá trị mặc định nếu 'num' không tồn tại
+                                                    }
+                                                @endphp
+                                                <tr>
+                                                    <td>{{ $item->title }}</td>
+                                                    <td>
+                                                        <img src="{{ $item->thumbnail }}" style="width: 160px">
+                                                    </td>
+                                                    <td>
+                                                        {{ number_format($item->discount, 0) }}
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" name="num" value="{{ $item->num }}" class="form-control"
+                                                            style="width: 80px" onchange="updateCart({{ $item->id }}, $(this).val())">
+                                                    </td>
+                                                    <td>
+                                                        {{ number_format($item->discount * $item->num, 0) }}
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-danger" onclick="updateCart({{ $item->id }}, 0)">Xóa</button>
+                                                    </td>
+                                                </tr>
                         @endforeach
                     </tbody>
+
+
                 </table>
                 <h3 style="float: left; font-size: 22px;">Tổng tiền: {{ number_format($total, 0) }}</h3>
                 <a href="{{ route('frontend.checkout') }}">
-                    <button class="btn btn-success" style="font-size: 20px; float: right;">Thanh
+                    <button class="btn btn-success" style="font-size: 20px; float: right;" >Thanh
                         Toán</button>
                 </a>
             </div>
@@ -78,49 +85,49 @@
 
 @section('js')
 <script type="text/javascript">
-function updateCart(id, num) {
-    cartList = getCookie('cart')
-    if (cartList != null && cartList != '') {
-        cartList = JSON.parse(cartList)
-    } else {
-        cartList = []
-    }
-
-    isFind = false
-    for (var i = 0; i < cartList.length; i++) {
-        if (cartList[i].id == id) {
-            if (num <= 0) {
-                cartList.splice(i, 1)
-            } else {
-                cartList[i].num = parseInt(num)
-            }
-
-            isFind = true
-            break
+    function updateCart(id, num) {
+        cartList = getCookie('cart')
+        if (cartList != null && cartList != '') {
+            cartList = JSON.parse(cartList)
+        } else {
+            cartList = []
         }
+
+        isFind = false
+        for (var i = 0; i < cartList.length; i++) {
+            if (cartList[i].id == id) {
+                if (num <= 0) {
+                    cartList.splice(i, 1)
+                } else {
+                    cartList[i].num = parseInt(num)
+                }
+
+                isFind = true
+                break
+            }
+        }
+
+        cartList = JSON.stringify(cartList)
+        document.cookie = `cart=${cartList}` + getLifecycle()
+
+        location.reload()
     }
 
-    cartList = JSON.stringify(cartList)
-    document.cookie = `cart=${cartList}` + getLifecycle()
 
-    location.reload()
-}
-
-
-function getLifecycle() {
-    var now = new Date();
-    var time = now.getTime();
-    var expireTime = time + 30 * 1000 * 86400;
-    now.setTime(expireTime);
-    return ';expires=' + now.toUTCString() + ';path=/';
-}
-
-function getCookie(name) {
-    function escape(s) {
-        return s.replace(/([.*+?\^$(){}|\[\]\/\\])/g, '\\$1');
+    function getLifecycle() {
+        var now = new Date();
+        var time = now.getTime();
+        var expireTime = time + 30 * 1000 * 86400;
+        now.setTime(expireTime);
+        return ';expires=' + now.toUTCString() + ';path=/';
     }
-    var match = document.cookie.match(RegExp('(?:^|;\\s*)' + escape(name) + '=([^;]*)'));
-    return match ? match[1] : null;
-}
+
+    function getCookie(name) {
+        function escape(s) {
+            return s.replace(/([.*+?\^$(){}|\[\]\/\\])/g, '\\$1');
+        }
+        var match = document.cookie.match(RegExp('(?:^|;\\s*)' + escape(name) + '=([^;]*)'));
+        return match ? match[1] : null;
+    }
 </script>
 @stop
